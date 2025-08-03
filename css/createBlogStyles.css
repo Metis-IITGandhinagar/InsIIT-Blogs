@@ -1,8 +1,100 @@
 
 #createBlogForm {
 	min-height: 90vh;
-	width: 100vw;
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	padding: 0 2ch;
+	padding: 2rem;
+	gap: 1rem;
+}
+
+#createBlogForm label {
+	font-weight: 600;
+	margin-bottom: 0.25rem;
+	color: #333;
+}
+
+#createBlogForm input[type="text"],
+#createBlogForm textarea {
+	padding: 0.75rem;
+	border: 1px solid #ddd;
+	border-radius: 0.25rem;
+	font-size: 1rem;
+	font-family: inherit;
+	transition: border-color 0.3s ease;
+}
+
+#createBlogForm input[type="text"]:focus,
+#createBlogForm textarea:focus {
+	outline: none;
+	border-color: #007bff;
+	box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+#createBlogForm textarea {
+	min-height: 200px;
+	resize: vertical;
+}
+
+#createBlogForm button {
+	padding: 0.75rem 1.5rem;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 0.25rem;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 1rem;
+}
+
+#createBlogForm button:hover {
+	background-color: #0056b3;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+	#createBlogForm {
+		padding: 1.5rem;
+		gap: 0.75rem;
+	}
+	
+	#createBlogForm input[type="text"],
+	#createBlogForm textarea {
+		padding: 0.6rem;
+		font-size: 0.95rem;
+	}
+	
+	#createBlogForm textarea {
+		min-height: 150px;
+	}
+	
+	#createBlogForm button {
+		padding: 0.6rem 1.2rem;
+		font-size: 0.95rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#createBlogForm {
+		padding: 1rem;
+		gap: 0.5rem;
+	}
+	
+	#createBlogForm input[type="text"],
+	#createBlogForm textarea {
+		padding: 0.5rem;
+		font-size: 0.9rem;
+	}
+	
+	#createBlogForm textarea {
+		min-height: 120px;
+	}
+	
+	#createBlogForm button {
+		padding: 0.5rem 1rem;
+		font-size: 0.9rem;
+	}
 }

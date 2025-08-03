@@ -1,8 +1,65 @@
 #rightBox {
 	display: flex;
-	justify-content: space between;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
 }
 
+#createBlog, #userIcon {
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	min-height: 44px; /* Minimum touch target size */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
-@media (screen orientation: portrait) {
+#createBlog {
+	background-color: #007bff;
+	color: white;
+	text-decoration: none;
+}
+
+#createBlog:hover {
+	background-color: #0056b3;
+}
+
+#userIcon {
+	background-color: #6c757d;
+	color: white;
+}
+
+#userIcon:hover {
+	background-color: #545b62;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+	#rightBox {
+		gap: 0.5rem;
+	}
+	
+	#createBlog, #userIcon {
+		padding: 0.6rem 1rem;
+		font-size: 0.9rem;
+		min-height: 44px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#rightBox {
+		flex-direction: column;
+		gap: 0.5rem;
+		width: 100%;
+	}
+	
+	#createBlog, #userIcon {
+		padding: 0.75rem;
+		text-align: center;
+		width: 100%;
+		font-size: 0.9rem;
+		min-height: 44px;
+	}
 }

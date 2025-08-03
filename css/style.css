@@ -3,8 +3,14 @@
 	padding: 0;
 	font-family: sans-serif;
 	position: relative;
+	box-sizing: border-box;
 }
 
+body {
+	font-size: 16px;
+	line-height: 1.5;
+	overflow-x: hidden;
+}
 
 #navbar {
 	height: 1rem;
@@ -12,6 +18,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: #f8f9fa;
+	border-bottom: 1px solid #e0e0e0;
+	position: sticky;
+	top: 0;
+	z-index: 100;
 }
 
 #loadingContainer {
@@ -26,4 +37,41 @@
 #loadingImage {
 	width: 4rem;
 	height: 4rem;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+	#navbar {
+		padding: 0.5rem;
+		flex-wrap: wrap;
+		height: auto;
+		position: sticky;
+	}
+	
+	#logo {
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	
+	body {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#navbar {
+		padding: 0.5rem;
+		flex-direction: column;
+		gap: 0.5rem;
+		height: auto;
+		position: sticky;
+	}
+	
+	#logo {
+		font-size: 1.1rem;
+	}
+	
+	body {
+		font-size: 13px;
+	}
 }

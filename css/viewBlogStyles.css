@@ -1,0 +1,91 @@
+#blog {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+	line-height: 1.6;
+}
+
+#blog #title {
+	font-size: 2rem;
+	font-weight: 700;
+	color: #333;
+	margin-bottom: 1rem;
+	line-height: 1.2;
+}
+
+#blog #subline {
+	font-size: 1.2rem;
+	color: #666;
+	font-style: italic;
+	margin-bottom: 0.5rem;
+}
+
+#blog #author {
+	font-size: 1rem;
+	color: #888;
+	margin-bottom: 2rem;
+	font-weight: 500;
+}
+
+#blog #author::before {
+	content: "By ";
+}
+
+#blog #body {
+	font-size: 1.1rem;
+	color: #333;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+	#blog {
+		padding: 1.5rem;
+	}
+	
+	#blog #title {
+		font-size: 1.6rem;
+		margin-bottom: 0.8rem;
+	}
+	
+	#blog #subline {
+		font-size: 1.1rem;
+		margin-bottom: 0.4rem;
+	}
+	
+	#blog #author {
+		font-size: 0.95rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	#blog #body {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#blog {
+		padding: 1rem;
+	}
+	
+	#blog #title {
+		font-size: 1.4rem;
+		margin-bottom: 0.6rem;
+	}
+	
+	#blog #subline {
+		font-size: 1rem;
+		margin-bottom: 0.3rem;
+	}
+	
+	#blog #author {
+		font-size: 0.9rem;
+		margin-bottom: 1rem;
+	}
+	
+	#blog #body {
+		font-size: 0.95rem;
+	}
+}
