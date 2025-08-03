@@ -10,16 +10,28 @@
     <link rel="stylesheet" href="css/navStyles.css">
   <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
   <script src="js/firebaseSetup.js" defer type="module"></script>
+  <script src="js/navbarManager.js" defer type="module"></script>
   <script src="js/script.js" defer type="module"></script>
   <script src="js/viewBlogScript.js" defer type="module"></script>
   </head>
   <body>
 	  <div id="navbar">
-		  <div id="logo"> Logo </div>
+		  <div id="logo">
+			 Logo
+		  </div>
+
+		  <div id="searchContainer">
+			  <input type="text" id="searchBar" placeholder="Search in this blog...">
+			  <button id="searchButton">🔍</button>
+		  </div>
 
 		  <div id="rightBox">
-			  <div id="userStatus"> 
-				  <div id="userIcon">User</div>
+			  <a href="createBlog.html" id="createBlogLink">
+				  <div id="createBlog">Create Blog</div>
+			  </a>
+			  <button id="loginButton">Login</button>
+			  <div id="userProfile" style="display: none;">
+				  <img id="userAvatar" src="assets/placeholderImage.jpg" alt="User">
 			  </div>
 		  </div>
 	  </div>

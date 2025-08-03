@@ -1,8 +1,188 @@
+#navbar {
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	padding: 1.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#logo {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	cursor: pointer;
+}
+
+#logo img {
+	height: 40px;
+	width: auto;
+	object-fit: contain;
+	border-radius: 8px;
+	transition: transform 0.3s ease;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#logo img:hover {
+	transform: scale(1.05);
+}
+
+#searchContainer {
+	display: flex;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 25px;
+	padding: 8px 16px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	min-width: 300px;
+	max-width: 400px;
+	flex: 1;
+	margin: 0 20px;
+}
+
+#searchBar {
+	border: none;
+	outline: none;
+	background: transparent;
+	padding: 8px 12px;
+	font-size: 14px;
+	color: #333;
+	flex: 1;
+	font-family: 'Arial', sans-serif;
+}
+
+#searchBar::placeholder {
+	color: #666;
+}
+
+#searchButton {
+	background: none;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+	padding: 4px 8px;
+	border-radius: 50%;
+	transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+	background: rgba(102, 126, 234, 0.1);
+}
+
 #rightBox {
 	display: flex;
-	justify-content: space between;
+	align-items: center;
+	gap: 16px;
+}
+
+#createBlogLink, #homeBlogLink {
+	text-decoration: none;
+}
+
+#createBlog, #homeBlog {
+	background: rgba(255, 255, 255, 0.2);
+	color: white;
+	padding: 10px 20px;
+	border-radius: 20px;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#createBlog:hover, #homeBlog:hover {
+	background: rgba(255, 255, 255, 0.3);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#loginButton {
+	background: #4CAF50;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 20px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 14px;
+	box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+#loginButton:hover {
+	background: #45a049;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+#userProfile {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+#userAvatar {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid rgba(255, 255, 255, 0.8);
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#userAvatar:hover {
+	transform: scale(1.1);
+	border-color: white;
+}
+
+.search-highlight {
+	background-color: #ffeb3b;
+	padding: 2px 4px;
+	border-radius: 3px;
 }
 
 
-@media (screen orientation: portrait) {
+@media (orientation: portrait) {
+	#navbar {
+		flex-wrap: wrap;
+		padding: 8px 16px;
+	}
+	
+	#searchContainer {
+		order: 3;
+		width: 100%;
+		margin: 8px 0 0 0;
+		min-width: unset;
+	}
+	
+	#rightBox {
+		gap: 12px;
+	}
+	
+	#createBlog, #homeBlog {
+		padding: 8px 16px;
+		font-size: 12px;
+	}
+	
+	#loginButton {
+		padding: 8px 16px;
+		font-size: 12px;
+	}
+	
+	#userAvatar {
+		width: 32px;
+		height: 32px;
+	}
+	
+	#logo img {
+		height: 32px;
+	}
 }
