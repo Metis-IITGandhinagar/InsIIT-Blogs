@@ -1,43 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>InsIIT-Blogs</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/homeStyles.css">
-    <link rel="stylesheet" href="css/navStyles.css">
-    <link rel="icon" type="image/png" href="assets/favicon.ico">
-  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
-  <script src="js/firebaseSetup.js" defer type="module"></script>
-  <script src="js/script.js" defer type="module"></script>
-  <script src="js/blogsScript.js" defer type="module"></script>
+    <link rel="icon" type="image/png" href="assets/favicon.ico" />
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/homeStyles.css" />
+    <link rel="stylesheet" href="css/navStyles.css" />
+    <link rel="stylesheet" href="css/homePage.css" />
+
+    <!-- Firebase + Custom JS -->
+    <script src="js/firebaseSetup.js" defer type="module"></script>
+    <script src="js/script.js" defer type="module"></script>
+    <script src="js/blogsScript.js" defer type="module"></script>
+    <script src="js/homePage.js" defer></script>
   </head>
   <body>
-	  <div id="navbar">
-		  <div id="logo">
-        <a href="/index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
+    <!-- Navigation Bar -->
+    <div id="navbar">
+      <div id="logo">
+        <a href="/index.html"><img src="assets/Logo.jpg" alt="Logo" /></a>
       </div>
+      <div id="rightBox">
+        <a href="createBlog.html"><div id="createBlog">Create Blog</div></a>
+        <div id="userStatus">
+          <div id="userIcon">User</div>
+        </div>
+      </div>
+    </div>
 
-		  <div id="rightBox">
-			  <a href="createBlog.html"><div id="createBlog"> Create Blog </div></a>
-			  <div id="userStatus"> 
-				  <div id="userIcon">User</div>
-			  </div>
-		  </div>
-	  </div>
-	
-
-	  <div id="blogs">
-		  <div id="loadingContainer">
-			  <img id="loadingImage" src="assets/loadingImage.gif">
-		  </div>
-	  </div>
-
+    <!-- Hero Section -->
+<!-- Hero Section with Video -->
+<section class="hero">
+  <video autoplay muted loop playsinline id="heroVideo">
+    <source src="./assets/hero_section_vedio.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-content">
+    <h1>Welcome to InsIIT Blogs</h1>
+    <p>Explore thoughts, ideas and creativity from the minds of IIT Gandhinagar</p>
+    <a href="#blogs" class="cta-button">Browse Blogs</a>
+  </div>
+</section>
 
 
+    <!-- Trending Blogs Section -->
+    <section class="trending-section">
+      <div class="container">
+        <h2>Top Trending Blogs</h2>
+        <div class="trending-blogs">
+          <div class="blog-card">
+            <img src="assets/blog1.jpg" alt="Blog 1" />
+            <h3>How Research Culture Grows in IITs</h3>
+            <p>Discover how IITGN fosters innovation and scientific thinking.</p>
+          </div>
+          <div class="blog-card">
+            <img src="assets/blog2.jpg" alt="Blog 2" />
+            <h3>AI in Campus Life</h3>
+            <p>Learn how AI is changing the way we learn, live, and thrive at IITGN.</p>
+          </div>
+          <div class="blog-card">
+            <img src="assets/blog3.jpg" alt="Blog 3" />
+            <h3>Minimalism in Student Life</h3>
+            <p>A practical guide to living better with less during your college journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Blog List Container -->
+    <div id="blogs">
+      <div id="loadingContainer">
+        <img id="loadingImage" src="assets/loadingImage.gif" alt="Loading..." />
+      </div>
+    </div>
+
+    <!-- Photo Gallery -->
+    <section class="gallery-section">
+      <div class="container">
+        <h2>Campus Moments</h2>
+        <div class="gallery-grid">
+          <img src="assets/1.jpg" alt="Gallery Image 1" />
+          <img src="assets/2.jpg" alt="Gallery Image 2" />
+          <img src="assets/3.jpg" alt="Gallery Image 3" />
+          <img src="assets/4.jpg" alt="Gallery Image 4" />
+          <img src="assets/5.jpg" alt="Gallery Image 5" />
+          <img src="assets/6.jpg" alt="Gallery Image 6" />
+          <img src="assets/7.jpg" alt="Gallery Image 7" />
+          <img src="assets/8.jpg" alt="Gallery Image 8" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 InsIIT Blogs | Made with ♥ at IIT Gandhinagar</p>
+    </footer>
   </body>
 </html>
-
