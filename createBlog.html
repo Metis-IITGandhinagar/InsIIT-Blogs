@@ -9,9 +9,14 @@
     <link rel="stylesheet" href="css/createBlogStyles.css">
     <link rel="stylesheet" href="css/navStyles.css">
   <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+  <!-- Firebase and App Scripts -->
   <script src="js/firebaseSetup.js" defer type="module"></script>
   <script src="js/script.js" defer type="module"></script>
   <script src="js/createBlogScript.js" defer type="module"></script>
+  <!-- Smooth Scroll Script -->
+  <script src="js/smooth-scroll.js" defer></script>
+  <!-- Back to Top Script -->
+  <script src="js/back-to-top.js" defer></script>
   </head>
   <body>
 	  <div id="navbar">
@@ -25,15 +30,19 @@
 	  </div>
 	
 
-	  <form id="createBlogForm">
-		  <label for="title">Title</label>
-		  <input type="text" name="title">
-		  <label for="subline">Subline</label>
-		  <input type="text" name="subline">
-		  <label for="body">Body</label>
-		  <textarea name="body"></textarea>
-		  <button type="submit">Create Blog</button>
-	  </form>
+	  <main>
+		  <form id="createBlogForm" class="blog-form">
+			  <label for="title">Title</label>
+			  <input type="text" name="title" required>
+			  <label for="subline">Subline</label>
+			  <input type="text" name="subline" required>
+			  <label for="body">Body</label>
+			  <textarea name="body" required></textarea>
+			  <div class="form-actions">
+				  <button type="submit" class="submit-button">Create Blog</button>
+			  </div>
+		  </form>
+	  </main>
 
 
 

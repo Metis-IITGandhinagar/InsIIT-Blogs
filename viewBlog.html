@@ -9,9 +9,14 @@
     <link rel="stylesheet" href="css/viewBlogStyles.css">
     <link rel="stylesheet" href="css/navStyles.css">
   <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
-  <script src="js/firebaseSetup.js" defer type="module"></script>
-  <script src="js/script.js" defer type="module"></script>
-  <script src="js/viewBlogScript.js" defer type="module"></script>
+  <!-- Firebase and App Scripts -->
+  <script src="js/firebaseSetup.js" type="module"></script>
+  <script src="js/script.js" type="module"></script>
+  <script src="js/viewBlogScript.js" type="module"></script>
+  <!-- Smooth Scroll Script -->
+  <script src="js/smooth-scroll.js" defer></script>
+  <!-- Back to Top Script -->
+  <script src="js/back-to-top.js" defer></script>
   </head>
   <body>
 	  <div id="navbar">
@@ -25,17 +30,19 @@
 	  </div>
 	
 
-	  <div id="blog">
-		  <div class="blog-header">
-			  <h1 id="title"></h1>
-			  <button id="deleteButton" class="delete-button" style="display: none;">
-				  <span class="delete-icon">🗑️</span> Delete Post
-			  </button>
-		  </div>
-		  <p id="subline"></p>
-		  <p id="author"></p>
-		  <p id="body"></p>
-	  </div>
+	  <main>
+		  <article id="blog" class="blog-post">
+			  <header class="blog-header">
+				  <h1 id="title" class="blog-title"></h1>
+				  <button id="deleteButton" class="delete-button" style="display: none;" aria-label="Delete blog post">
+					  <span class="delete-icon">🗑️</span> Delete Post
+				  </button>
+			  </header>
+			  <p id="subline" class="blog-subline"></p>
+			  <p id="author" class="blog-author"></p>
+			  <div id="body" class="blog-content"></div>
+		  </article>
+	  </main>
 	  
 	  <!-- Confirmation Dialog -->
 	  <div id="deleteDialog" class="dialog-overlay">

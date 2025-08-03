@@ -1,8 +1,75 @@
+/* Navigation container */
 #rightBox {
-	display: flex;
-	justify-content: space between;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
 }
 
+/* User status and icon */
+#userStatus {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
 
-@media (screen orientation: portrait) {
+#userIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+#userIcon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation links */
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: #f5f5f5;
+    color: #4a90e2;
+}
+
+/* Active link */
+.nav-link.active {
+    color: #4a90e2;
+    font-weight: 600;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    #rightBox {
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
