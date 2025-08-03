@@ -1,112 +1,262 @@
+/* homePage.css */
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #e6f0ff, #f5fbff);
+  text-align: center;
+  padding: 80px 20px;
+  color: #003366;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background-color: #0066cc;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #004c99;
+}
+
+/* Intro Section */
+.intro-section {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+  color: #003366;
+}
+
+.intro-section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.intro-section p {
+  font-size: 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Trending Blogs Section */
+.trending-section {
+  background-color: #f0f7ff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.trending-section h2 {
+  font-size: 2rem;
+  color: #003366;
+  margin-bottom: 40px;
+}
+
+.trending-blogs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.blog-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  max-width: 300px;
+  text-align: left;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-card h3 {
+  font-size: 1.2rem;
+  padding: 15px 15px 5px;
+  color: #003366;
+}
+
+.blog-card p {
+  font-size: 0.95rem;
+  padding: 0 15px 15px;
+  color: #333;
+}
+
+/* Blog Section */
 #blogs {
-	min-height: 90vh;
-	width: 100vw;
-	display: flex;
-	padding: 1rem;
-	flex-shrink: 0;
-	height: 40vh;
-	flex-wrap: wrap;
+  padding: 40px 20px;
 }
 
-.blog {
-    width: 250px;
-    height: 250px;
-    border-radius: 0.5rem;
-    margin: 0.75rem;
-    padding: 1rem;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: inherit;
-    transform: translateZ(0);
-    will-change: transform, box-shadow;
-    position: relative;
-    overflow: hidden;
+#loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
 }
 
-.blog:hover {
-    transform: scale(1.02) translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+/* Gallery Section */
+.gallery-section {
+  padding: 60px 20px;
+  background-color: #e6f0ff;
+  text-align: center;
 }
 
-/* Ensure smooth transitions for child elements */
-.blog * {
-    transition: inherit;
+.gallery-section h2 {
+  font-size: 2rem;
+  color: #003366;
+  margin-bottom: 30px;
 }
 
-/* Add a subtle overlay on hover */
-.blog::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.01);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.blog:hover::after {
-    opacity: 1;
+.gallery-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.blog-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+/* Footer */
+footer {
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+}
+/* Hero Section with Video Background */
+.hero {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
 }
 
-.blog h3 {
-    margin: 0.5rem 0 0.3rem;
-    font-size: 1rem;
-    color: #333;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 0.2rem;
+#heroVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.8;
 }
 
-.blog p {
-    margin: 0.2rem 0;
-    color: #666;
-    font-size: 0.85rem;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    flex-grow: 1;
-    padding: 0 0.2rem;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  max-width: 800px;
 }
 
-.blogImage {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 0.25rem;
-    margin-bottom: 0.5rem;
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
-.read-more {
-	color: #007bff;
-	font-weight: bold;
-	cursor: pointer;
-	text-decoration: underline;
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
-.read-more:hover {
-	color: #0056b3;
+.cta-button {
+  background-color: #ffffff;
+  color: #003366;
+  padding: 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
-.no-blogs {
-	text-align: center;
-	font-size: 1.2rem;
-	color: #666;
-	margin: 2rem auto;
-	width: 100%;
+.cta-button:hover {
+  background-color: #e0e0e0;
+}
+/* Navbar container */
+#navbar {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Logo */
+#logo img {
+  height: 50px;
+}
+
+/* Right box containing buttons */
+#rightBox {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Button Common Styles */
+#createBlog, #userIcon {
+  background: linear-gradient(to right, #0052cc, #007bff);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 82, 204, 0.2);
+  text-align: center;
+}
+
+/* Hover Effects */
+#createBlog:hover {
+  background: linear-gradient(to right, #0041a8, #005fc5);
+  transform: translateY(-2px);
+}
+
+#userIcon {
+  background: linear-gradient(to right, #00b4d8, #0077b6);
+}
+
+#userIcon:hover {
+  background: linear-gradient(to right, #0096c7, #005f8f);
+  transform: scale(1.05);
 }
