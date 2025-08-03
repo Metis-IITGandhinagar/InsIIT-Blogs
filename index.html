@@ -9,9 +9,14 @@
     <link rel="stylesheet" href="css/homeStyles.css">
     <link rel="stylesheet" href="css/navStyles.css">
   <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+  <!-- Firebase and App Scripts -->
   <script src="js/firebaseSetup.js" defer type="module"></script>
   <script src="js/script.js" defer type="module"></script>
   <script src="js/blogsScript.js" defer type="module"></script>
+  <!-- Smooth Scroll Script -->
+  <script src="js/smooth-scroll.js" defer></script>
+  <!-- Back to Top Script -->
+  <script src="js/back-to-top.js" defer></script>
   </head>
   <body>
 	  <div id="navbar">
@@ -26,15 +31,12 @@
 	  </div>
 	
 
-	  <div id="blogs">
-		  <div id="loadingContainer">
-			  <img id="loadingImage" src="assets/loadingImage.gif">
+	  <main>
+		  <div id="blogs">
+			  <div id="loadingContainer">
+				  <img id="loadingImage" src="assets/loadingImage.gif" alt="Loading...">
+			  </div>
 		  </div>
-	  </div>
-
-
-
-
+	  </main>
   </body>
 </html>
-

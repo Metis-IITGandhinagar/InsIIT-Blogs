@@ -1,0 +1,83 @@
+/* Smooth scrolling for the entire document */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem; /* Height of the navbar to prevent content from being hidden behind it */
+  transition: scroll-behavior 0.3s ease-in-out;
+}
+
+/* Smooth scroll for browsers that don't support scroll-behavior */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Add smooth transition for page transitions */
+  html.page-transition * {
+    transition: opacity 0.1s ease-in-out;
+  }
+}
+
+/* Fallback for older browsers and reduced motion preference */
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Smooth scroll for specific elements with the smooth-scroll class */
+.smooth-scroll {
+  scroll-margin-top: 4rem; /* Height of the navbar */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Animation for smooth scrolling */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page load animation */
+html:not(.page-loaded) {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+html.page-loaded {
+  opacity: 1;
+}
+
+/* Blog post link hover effect */
+a[href*='viewBlog.html'],
+a[href*='index.html'] {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a[href*='viewBlog.html']:hover,
+a[href*='index.html']:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth transition for blog content */
+.blog-post {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Ensure content is visible after animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply fade-in animation to main content */
+main {
+  animation: fadeIn 0.3s ease-out forwards;
+}
