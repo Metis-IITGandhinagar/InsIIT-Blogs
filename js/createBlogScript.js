@@ -2,6 +2,23 @@ import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/fireba
 import auth from './script.js'
 import app from './firebaseSetup.js'
 
+// Toast notification function
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMessage = toast.querySelector('.toast-message');
+    
+    // Set message
+    toastMessage.textContent = message;
+    
+    // Show toast
+    toast.classList.add('show');
+    
+    // Hide toast after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
 const firestore = getFirestore(app)
 const currentUser = auth.currentUser
 
@@ -39,11 +56,17 @@ form.addEventListener('submit', async (event) => {
 			authorEmail: auth.currentUser.email,
 			blogId: docRef.id,
 			createdAt: new Date().toISOString()
-		})
+		});
+
+		// Show success toast
+		showToast('Blog posted successfully!');
 		
+		// Reset form
+		form.reset();
 
 	} catch (error) {
-		console.log(error)
+		console.error('Error creating blog post:', error);
+		showToast('Error creating blog post. Please try again.');
 	}
 
 })
