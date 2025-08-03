@@ -12,6 +12,24 @@ let currentUser = auth.currentUser
 const userIcon = document.querySelector('#userIcon')
 const loginButton = document.querySelector('#loginButton')
 const logoutButton = document.querySelector('#logoutButton')
+const createBlogButton = document.querySelector('#createBlog')
+
+// Toast notification function
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMessage = toast.querySelector('.toast-message');
+    
+    // Set message
+    toastMessage.textContent = message;
+    
+    // Show toast
+    toast.classList.add('show');
+    
+    // Hide toast after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
 
 async function signInWithGoogle() {
 	signInWithPopup(auth, provider)
@@ -54,12 +72,24 @@ auth.onAuthStateChanged((user) => {
 	if (user) {
 		userIcon.innerHTML = '<div id="logoutButton">Signout</div>'
 		userIcon.addEventListener('click', signOutWithGoogle)
+		currentUser = user
 	} else {
 		userIcon.innerHTML = '<div id="loginButton">Sign In</div>'
 		userIcon.addEventListener('click', signInWithGoogle)
 		currentUser = null
 	}
 })
+
+// Create Blog button event listener
+createBlogButton.addEventListener('click', function() {
+	if (currentUser) {
+		// User is logged in, navigate to create blog page
+		window.location.href = 'createBlog.html';
+	} else {
+		// User is not logged in, show toast message
+		showToast('Please login first!');
+	}
+});
 
 
 function signOutWithGoogle() {
