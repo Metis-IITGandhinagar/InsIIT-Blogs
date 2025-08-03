@@ -37,35 +37,36 @@
                 </div>
                 <div class="avatar-upload">
                     <label for="avatarInput" class="upload-btn">Change Avatar</label>
-                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;" disabled>
                 </div>
             </div>
-
+        
             <div class="form-group">
                 <label for="displayName">Display Name</label>
-                <input type="text" id="displayName" placeholder="Enter your display name">
+                <input type="text" id="displayName" placeholder="Enter your display name" disabled>
             </div>
-
+        
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" readonly>
             </div>
-
+        
             <div class="form-group">
                 <label for="bio">Bio</label>
-                <textarea id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                <textarea id="bio" rows="4" placeholder="Tell us about yourself..." disabled></textarea>
             </div>
-
+        
             <div class="form-actions">
-                <button id="saveProfile" class="save-btn">Save Changes</button>
+                <button id="editProfile" class="edit-btn">Edit</button>
+                <button id="saveProfile" class="save-btn" style="display: none;">Save Changes</button>
             </div>
-            
+        
             <div class="signout-section">
                 <button id="signOutBtn" class="signout-btn">Sign Out</button>
             </div>
-
+        
             <div id="message" class="message"></div>
-        </div>
+        </div>        
     </div>
 </body>
 </html> 

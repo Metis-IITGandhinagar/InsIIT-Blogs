@@ -16,6 +16,7 @@ const bioInput = document.getElementById('bio')
 const saveBtn = document.getElementById('saveProfile')
 const signOutBtn = document.getElementById('signOutBtn')
 const messageDiv = document.getElementById('message')
+const editBtn = document.getElementById('editProfile');
 
 let currentUser = null
 let userProfile = null
@@ -87,6 +88,15 @@ avatarInput.addEventListener('change', (event) => {
     }
 })
 
+editBtn.addEventListener('click', () => {
+    avatarInput.disabled = false;
+    displayNameInput.disabled = false;
+    bioInput.disabled = false;
+
+    editBtn.style.display = 'none';
+    saveBtn.style.display = 'inline-block';
+});
+
 // Handle save profile
 saveBtn.addEventListener('click', async () => {
     if (!currentUser) {
@@ -130,6 +140,12 @@ saveBtn.addEventListener('click', async () => {
         
         // Clear the file input
         avatarInput.value = ''
+        avatarInput.disabled = true;
+        displayNameInput.disabled = true;
+        bioInput.disabled = true;
+
+        editBtn.style.display = 'inline-block';
+        saveBtn.style.display = 'none';
         
     } catch (error) {
         console.error('Error saving profile:', error)
