@@ -1,7 +1,5 @@
-import app from './firebaseSetup.js'
-import { getFirestore, collection, doc, getDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
-
-const firestore = getFirestore(app)
+import { db } from './firebaseSetup.js'
+import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
 const blogTitle = document.querySelector('#title')
 const subline = document.querySelector('#subline')
 const author = document.querySelector('#author')
@@ -12,7 +10,7 @@ async function loadBlog() {
 	const urlParams = new URLSearchParams(window.location.search);
 	console.log('hello')
 	const blogId = urlParams.get('blogId')
-	const blogRef = doc(firestore, "blogs", blogId)
+	const blogRef = doc(db, "blogs", blogId)
 	console.log('hilo')
 	console.log(blogRef)
 	const blogSnap = await getDoc(blogRef)

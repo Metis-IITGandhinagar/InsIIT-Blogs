@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - InsIIT-Blogs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navStyles.css">
+    <link rel="stylesheet" href="css/profileStyles.css">
+    <script src="js/firebaseSetup.js" type="module"></script>
+    <script src="js/script.js" type="module"></script>
+    <script src="js/profileScript.js" type="module"></script>
+</head>
+<body>
+    <div id="navbar">
+        <div id="logo">
+            <a href="index.html">Logo</a>
+        </div>
+        <div id="rightBox">
+            <a href="createBlog.html"><div id="createBlog">Create Blog</div></a>
+            <div id="userStatus">
+                <div id="userIcon">User</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>My Profile</h1>
+            <button id="backButton" class="back-btn">← Back to Home</button>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-card">
+                <div class="profile-avatar-section">
+                    <div class="avatar-container">
+                        <img id="profileAvatar" src="assets/placeholderImage.jpg" alt="Profile Avatar" class="profile-avatar">
+                        <div class="avatar-overlay" id="avatarOverlay">
+                            <span>Change Photo</span>
+                        </div>
+                    </div>
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                </div>
+
+                <div class="profile-info">
+                    <div class="info-group">
+                        <label for="displayName">Display Name</label>
+                        <input type="text" id="displayName" class="profile-input" readonly>
+                    </div>
+
+                    <div class="info-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="profile-input" readonly>
+                    </div>
+
+                    <div class="info-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" class="profile-textarea" rows="4" readonly placeholder="Tell us about yourself..."></textarea>
+                    </div>
+
+                    <div class="profile-actions">
+                        <button id="editButton" class="edit-btn">Edit Profile</button>
+                        <button id="saveButton" class="save-btn" style="display: none;">Save Changes</button>
+                        <button id="cancelButton" class="cancel-btn" style="display: none;">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <h3>Blogs Written</h3>
+                    <span id="blogsCount" class="stat-number">0</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Member Since</h3>
+                    <span id="memberSince" class="stat-number">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Saving changes...</p>
+    </div>
+</body>
+</html> 

@@ -1,9 +1,5 @@
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
-import auth from './script.js'
-import app from './firebaseSetup.js'
-
-const firestore = getFirestore(app)
-const currentUser = auth.currentUser
+import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
+import { auth, db } from './firebaseSetup.js'
 
 
 
@@ -23,11 +19,11 @@ form.addEventListener('submit', async (event) => {
 	const body = formData.get('body')
 	const author = auth.currentUser.displayName
 	try {
-		const docRef = await addDoc(collection(firestore, "blogs"), {
+		const docRef = await addDoc(collection(db, "blogs"), {
 			title, subline, body, author
 		})
 
-		const indexRef = await addDoc(collection(firestore, "blogsRef"), {
+		const indexRef = await addDoc(collection(db, "blogsRef"), {
 			title, subline, author, blogId: docRef.id
 		})
 		

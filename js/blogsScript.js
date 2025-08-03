@@ -1,12 +1,11 @@
-import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
-import app from './firebaseSetup.js'
-const firestore = getFirestore(app)
+import { collection, getDocs } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
+import { db } from './firebaseSetup.js'
 const blogs = document.querySelector('#blogs')
 const loadingIndicator = document.querySelector('#loadingContainer')
 
 
 async function getBlogs () {
-		const querySnapshot = await getDocs(collection(firestore, "blogsRef"))
+		const querySnapshot = await getDocs(collection(db, "blogsRef"))
 		 querySnapshot.forEach((doc) => {
 			const docData = doc.data()
 			blogs.innerHTML += `<a class="blog" id="${doc.id}" href="/viewBlog?blogId=${docData.blogId}"><img class="blogImage" src="./assets/placeholderImage.jpg"><h3>${docData.title}</h3><p>${docData.subline}</p></a>`
