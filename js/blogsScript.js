@@ -8,6 +8,9 @@ const firestore = getFirestore(app);
 const blogs = document.querySelector("#blogs");
 const loadingIndicator = document.querySelector("#loadingContainer");
 
+// Global variable to store blogs for search functionality
+window.blogsData = [];
+
 // Function to truncate text beyond 50 chars and add "Read More" link
 function truncateText(text, maxLength = 50) {
   if (text.length <= maxLength) {
@@ -21,20 +24,31 @@ function truncateText(text, maxLength = 50) {
 
 async function getBlogs() {
   const querySnapshot = await getDocs(collection(firestore, "blogsRef"));
-  querySnapshot.forEach((doc) => {
-    const docData = doc.data();
-    const truncatedSubline = truncateText(docData.subline);
-    blogs.innerHTML += `
-      <a class="blog" id="${doc.id}" href="viewBlog.html?blogId=${docData.blogId}">
-        <img class="blogImage" src="./assets/placeholderImage.jpg" alt="${docData.title}">
-        <div class="blog-content">
-          <h3>${docData.title}</h3>
-          <p>${truncatedSubline}</p>
-        </div>
-      </a>`;
-  });
+  if (querySnapshot.empty) {
+    blogs.innerHTML =
+      "<p class='no-blogs'>No blogs found, Be the first to create one!</p>";
+  } else {
+    window.blogsData = []; // Clear previous data
+    querySnapshot.forEach((doc) => {
+      const docData = doc.data();
+      const truncatedSubline = truncateText(docData.subline);
+      blogs.innerHTML += `<a class="blog" id="${doc.id}" href="/viewBlog?blogId=${docData.blogId}"><img class="blogImage" src="./assets/placeholderImage.jpg"><h3>${docData.title}</h3><p>${truncatedSubline}</p></a>`;
+      
+      // Store blog data for search functionality
+      window.blogsData.push({
+        id: doc.id,
+        title: docData.title,
+        subline: docData.subline,
+        content: docData.content || '',
+        blogId: docData.blogId,
+        author: docData.author || '',
+        tags: docData.tags || [],
+        createdAt: docData.createdAt || ''
+      });
+    });
+  }
   hideLoadingIndicator();
-  console.log("hi");
+  console.log("Blogs loaded successfully");
 }
 
 try {
