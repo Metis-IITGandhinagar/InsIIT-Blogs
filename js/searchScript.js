@@ -49,7 +49,9 @@ class FuzzySearch {
       }
 
       // As a fallback, load directly from Firebase
+      console.log("hii")
       const querySnapshot = await getDocs(collection(firestore, "blogsRef"));
+      console.log("hello")
       this.allBlogs = [];
       
       querySnapshot.forEach((doc) => {

@@ -227,7 +227,6 @@
 /* Enhanced focus styles for accessibility */
 #searchInput:focus,
 .search-result-item:focus {
-    outline: 2px solid #007bff;
     outline-offset: 2px;
 }
 
