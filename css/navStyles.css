@@ -3,7 +3,7 @@
 	top: 0;
 	z-index: 1000;
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	padding: 1.4rem;
+	padding: 12px 24px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -126,6 +126,7 @@
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+	position: relative;
 }
 
 #userAvatar {
@@ -147,6 +148,54 @@
 	background-color: #ffeb3b;
 	padding: 2px 4px;
 	border-radius: 3px;
+}
+
+/* User Dropdown Styles */
+.user-dropdown {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+	padding: 8px 0;
+	min-width: 150px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-10px);
+	transition: all 0.3s ease;
+	z-index: 1001;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#userProfile:hover .user-dropdown {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.user-dropdown a,
+.user-dropdown button {
+	display: block;
+	width: 100%;
+	padding: 12px 16px;
+	text-decoration: none;
+	color: #333;
+	border: none;
+	background: none;
+	text-align: left;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	font-size: 14px;
+}
+
+.user-dropdown a:hover,
+.user-dropdown button:hover {
+	background-color: #f8f9fa;
+}
+
+.user-dropdown button:hover {
+	color: #f44336;
 }
 
 

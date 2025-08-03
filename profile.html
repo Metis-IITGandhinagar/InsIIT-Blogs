@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navStyles.css">
+    <link rel="stylesheet" href="css/profileStyles.css">
+  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+  <script src="js/firebaseSetup.js" defer type="module"></script>
+  <script src="js/navbarManager.js" defer type="module"></script>
+  <script src="js/script.js" defer type="module"></script>
+  <script src="js/profileScript.js" defer type="module"></script>
+  </head>
+  <body>
+	  <div id="navbar">
+		  <div id="logo">
+			  <img src="assets/Logo.jpg" alt="Logo">
+		  </div>
+
+		  <div id="searchContainer">
+			  <input type="text" id="searchBar" placeholder="Search blogs...">
+			  <button id="searchButton">🔍</button>
+		  </div>
+
+		  <div id="rightBox">
+			  <a href="createBlog.html" id="createBlogLink">
+				  <div id="createBlog">Create Blog</div>
+			  </a>
+			  <button id="loginButton">Login</button>
+			  <div id="userProfile" style="display: none;">
+				  <img id="userAvatar" src="assets/placeholderImage.jpg" alt="User">
+				  <div id="userDropdown" class="user-dropdown">
+					  <a href="profile.html" id="viewProfileBtn">View Profile</a>
+					  <button id="logoutBtn">Logout</button>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+
+	  <div id="profileContainer">
+		  <div id="profileHeader">
+			  <h1>User Profile</h1>
+		  </div>
+
+		  <div id="profileContent">
+			  <div id="profileImageSection">
+				  <img id="profileImage" src="assets/placeholderImage.jpg" alt="Profile Picture">
+			  </div>
+
+			  <div id="profileDetailsSection">
+				  <div class="profile-field">
+					  <label for="displayName">Full Name:</label>
+					  <input type="text" id="displayName" readonly>
+					  <button id="editNameBtn" class="edit-btn">Edit</button>
+				  </div>
+
+				  <div class="profile-field">
+					  <label for="username">Username:</label>
+					  <input type="text" id="username" readonly>
+					  <button id="editUsernameBtn" class="edit-btn">Edit</button>
+				  </div>
+
+				  <div class="profile-field">
+					  <label for="email">Email:</label>
+					  <input type="email" id="email" readonly disabled>
+				  </div>
+
+				  <div class="profile-actions">
+					  <button id="saveProfileBtn" style="display: none;">Save Changes</button>
+					  <button id="cancelEditBtn" style="display: none;">Cancel</button>
+				  </div>
+			  </div>
+		  </div>
+
+		  <div id="userBlogsSection">
+			  <h2>My Blogs</h2>
+			  <div id="userBlogs">
+				  <!-- User's blogs will be loaded here -->
+			  </div>
+		  </div>
+	  </div>
+
+  </body>
+</html>

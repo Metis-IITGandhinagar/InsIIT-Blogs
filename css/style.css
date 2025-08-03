@@ -5,25 +5,43 @@
 	position: relative;
 }
 
-
-#navbar {
-	height: 1rem;
-	padding: 1rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+body {
+	background-color: #f8f9fa;
+	min-height: 100vh;
 }
 
 #loadingContainer {
 	width: 100%;
-	height: 100%;
+	height: 200px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	position: absolute;
+	padding: 20px;
+	transition: opacity 0.3s ease;
+}
+
+#loadingContainer.hidden {
+	display: none !important;
+	opacity: 0;
 }
 
 #loadingImage {
 	width: 4rem;
 	height: 4rem;
+	margin-bottom: 10px;
+}
+
+#blogs {
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+#testContent {
+	margin: 20px;
+	padding: 20px;
+	background: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }

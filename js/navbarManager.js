@@ -1,6 +1,6 @@
 // Navigation Bar Authentication and Search Functionality
 import { getAuth, signOut, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js'
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
+import { getFirestore, collection, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
 import app from './firebaseSetup.js'
 
 class NavbarManager {
@@ -39,9 +39,10 @@ class NavbarManager {
             this.loginButton.addEventListener('click', () => this.signInWithGoogle());
         }
 
-        // User profile click (logout)
-        if (this.userProfile) {
-            this.userProfile.addEventListener('click', () => this.signOut());
+        // Logout button in dropdown
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => this.signOut());
         }
 
         // Logo click - go to home
@@ -51,6 +52,14 @@ class NavbarManager {
                 window.location.href = 'index.html';
             });
         }
+
+        // Prevent dropdown from closing when clicking inside it
+        const userDropdown = document.getElementById('userDropdown');
+        if (userDropdown) {
+            userDropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
     }
 
     async signInWithGoogle() {
@@ -58,14 +67,22 @@ class NavbarManager {
             const result = await signInWithPopup(this.auth, this.provider);
             const user = result.user;
             
-            // Save user to Firestore
-            await addDoc(collection(this.firestore, "authors"), {
-                uid: user.uid,
-                displayName: user.displayName,
-                email: user.email,
-                bio: "Hey there! I'm using IITGN blogs",
-                imageUrl: user.photoURL || "assets/placeholderImage.jpg"
-            });
+            // Check if user document already exists
+            const userDocRef = doc(this.firestore, "authors", user.uid);
+            const userDocSnap = await getDoc(userDocRef);
+            
+            if (!userDocSnap.exists()) {
+                // Create user document only if it doesn't exist
+                await setDoc(userDocRef, {
+                    uid: user.uid,
+                    displayName: user.displayName,
+                    username: user.email ? user.email.split('@')[0].toLowerCase() : 'user' + Date.now(),
+                    email: user.email,
+                    bio: "Hey there! I'm using IITGN blogs",
+                    imageUrl: user.photoURL || "assets/placeholderImage.jpg",
+                    createdAt: new Date().toISOString()
+                });
+            }
             
             console.log("User signed in successfully");
         } catch (error) {
@@ -280,7 +297,11 @@ class NavbarManager {
 
 // Initialize navbar when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new NavbarManager();
+    try {
+        new NavbarManager();
+    } catch (error) {
+        console.error('Error initializing NavbarManager:', error);
+    }
 });
 
 export default NavbarManager;
