@@ -14,11 +14,14 @@
 	max-height: 5rem;
 	border-radius: 0.5rem;
 	margin: 1rem;
-
+	padding: 1rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
 }
 
 .blog:hover {
-	box-shadow: 2px blue;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .blogImage {

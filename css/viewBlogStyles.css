@@ -1,0 +1,33 @@
+#blog {
+	min-height: 90vh;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+#blog h1 {
+	margin-bottom: 1rem;
+	font-size: 2.5rem;
+	line-height: 1.2;
+}
+
+#blog #subline {
+	font-size: 1.2rem;
+	color: var(--text-color);
+	opacity: 0.8;
+	margin-bottom: 1rem;
+	font-style: italic;
+}
+
+#blog #author {
+	font-size: 1rem;
+	color: var(--link-color);
+	margin-bottom: 2rem;
+	font-weight: bold;
+}
+
+#blog #body {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	text-align: justify;
+}
