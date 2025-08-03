@@ -7,8 +7,9 @@
 
 
 #navbar {
-	height: 1rem;
-	padding: 2rem 1rem;
+	height: auto;
+	min-height: 1rem;
+	padding: 0rem 0.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
