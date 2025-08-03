@@ -1,8 +1,46 @@
 #rightBox {
 	display: flex;
-	justify-content: space between;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+
+#profileBtn {
+	background: #007bff;
+	color: white;
+	padding: 8px 16px;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	font-weight: 500;
+}
+
+#profileBtn:hover {
+	background: #0056b3;
+}
+
+#profileLink a {
+	text-decoration: none;
+}
+
+#loginButton, #logoutButton, #userProfile {
+	background: #007bff;
+	color: white;
+	padding: 8px 16px;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	font-weight: 500;
+	text-decoration: none;
+	display: inline-block;
+}
+
+#loginButton:hover, #logoutButton:hover, #userProfile:hover {
+	background: #0056b3;
+}
+
+#userIcon {
+	cursor: pointer;
 }
 
 
-@media (screen orientation: portrait) {
-}
