@@ -1,0 +1,7 @@
+[33m767adfa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33m863f652[m HEAD@{1}: reset: moving to HEAD~1
+[33mc9a8ed8[m[33m ([m[1;31morigin/blog-list-feature[m[33m, [m[1;32mblog-list-feature[m[33m)[m HEAD@{2}: checkout: moving from blog-list-feature to main
+[33mc9a8ed8[m[33m ([m[1;31morigin/blog-list-feature[m[33m, [m[1;32mblog-list-feature[m[33m)[m HEAD@{3}: checkout: moving from main to blog-list-feature
+[33mc9a8ed8[m[33m ([m[1;31morigin/blog-list-feature[m[33m, [m[1;32mblog-list-feature[m[33m)[m HEAD@{4}: commit: Add user blog list with search functionality
+[33m863f652[m HEAD@{5}: commit: feat: Add user profile system with Google sign-in and profile editing
+[33m767adfa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{6}: clone: from https://github.com/DeepBuha06/InsIIT-Blogs.git
