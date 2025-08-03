@@ -26,3 +26,21 @@
 	max-height: 100%;
 }
 
+.read-more {
+	color: #007bff;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.read-more:hover {
+	color: #0056b3;
+}
+
+.no-blogs {
+	text-align: center;
+	font-size: 1.2rem;
+	color: #666;
+	margin: 2rem auto;
+	width: 100%;
+}
