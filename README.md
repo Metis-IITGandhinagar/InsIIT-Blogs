@@ -2,6 +2,11 @@
 
 So this is the official repository for InsIIT Blogs, a blogging website for people in IIT Gandhinagar. This project is made under the Clash of Commits competition by Metis IIT Gandhinagar.
 
+## Join Slack
+
+Anyone willing to contribute is requested to join the Metis Slack to be up to speed with the latest changes, discuss features, and help each other debugging code.
+[Click this Slack Invite](https://join.slack.com/t/metisiitgn/shared_invite/zt-3awnh5km8-uakjeap3B6m1kmhV8f4B7g)
+
 ## Running the project
 
 By default, the project is hosted on Github pages [here](https://metis-iitgandhinagar.github.io/InsIIT-Blogs/). There are few dummy blogs present here. You cannot create any blogs or create your account here, which is by design. 

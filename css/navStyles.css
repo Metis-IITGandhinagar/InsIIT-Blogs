@@ -1,8 +1,26 @@
+#logo {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+#logo img {
+	height: 40px;
+	width: auto;
+	object-fit: contain;
+	border-radius: 4px;
+	transition: transform 0.2s ease;
+}
+
+#logo img:hover {
+	transform: scale(1.05);
+}
+
 #rightBox {
 	display: flex;
 	justify-content: space between;
 }
 
 
-@media (screen orientation: portrait) {
+@media (orientation: portrait) {
 }
