@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create a Blog</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/createBlogStyles.css">
-    <link rel="stylesheet" href="css/navStyles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Create a Blog</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/createBlogStyles.css">
+	<link rel="stylesheet" href="css/navStyles.css">
 	<link rel="icon" type="image/png" href="assets/favicon.ico">
   <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
   <script src="js/firebaseSetup.js" defer type="module"></script>
@@ -41,6 +41,24 @@
 
 
 
-  </body>
+<script>
+  // Ensure all external links open in a new tab
+  document.addEventListener('DOMContentLoaded', function() {
+	document.querySelectorAll('a[href]').forEach(function(link) {
+	  const url = link.getAttribute('href');
+	  if (
+		url &&
+		!url.startsWith('/') && // not internal
+		!url.startsWith('#') && // not anchor
+		!url.startsWith('javascript:') &&
+		!url.includes(window.location.hostname)
+	  ) {
+		link.setAttribute('target', '_blank');
+		link.setAttribute('rel', 'noopener noreferrer');
+	  }
+	});
+  });
+</script>
+</body>
 </html>
 

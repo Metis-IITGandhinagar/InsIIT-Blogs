@@ -15,29 +15,47 @@
   <script src="js/blogsScript.js" defer type="module"></script>
   </head>
   <body>
-	  <div id="navbar">
-		  <div id="logo">
+    <div id="navbar">
+      <div id="logo">
         <a href="/index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
       </div>
 
-		  <div id="rightBox">
-			  <a href="createBlog.html"><div id="createBlog"> Create Blog </div></a>
-			  <div id="userStatus"> 
-				  <div id="userIcon">User</div>
-			  </div>
-		  </div>
-	  </div>
-	
+      <div id="rightBox">
+        <a href="createBlog.html"><div id="createBlog"> Create Blog </div></a>
+        <div id="userStatus"> 
+          <div id="userIcon">User</div>
+        </div>
+      </div>
+    </div>
+  
 
-	  <div id="blogs">
-		  <div id="loadingContainer">
-			  <img id="loadingImage" src="assets/loadingImage.gif">
-		  </div>
-	  </div>
-
-
+    <div id="blogs">
+      <div id="loadingContainer">
+        <img id="loadingImage" src="assets/loadingImage.gif">
+      </div>
+    </div>
 
 
-  </body>
+
+
+<script>
+  // Ensure all external links open in a new tab
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      const url = link.getAttribute('href');
+      if (
+        url &&
+        !url.startsWith('/') && // not internal
+        !url.startsWith('#') && // not anchor
+        !url.startsWith('javascript:') &&
+        !url.includes(window.location.hostname)
+      ) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  });
+</script>
+</body>
 </html>
 
