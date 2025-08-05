@@ -1,0 +1,123 @@
+/* Dark Mode Styles for Create Blog Page */
+
+/* Step containers */
+.step-container {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.step-header h1 {
+  color: var(--text-primary);
+}
+
+.step-header p {
+  color: var(--text-secondary);
+}
+
+/* Form elements */
+.details-form .form-group label {
+  color: var(--text-primary);
+}
+
+.details-form input,
+.details-form select {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.details-form input:focus,
+.details-form select:focus {
+  border-color: var(--accent-color);
+  background-color: var(--bg-tertiary);
+}
+
+.details-form input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.details-form select option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Buttons */
+.next-btn,
+.publish-btn,
+.back-btn {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+}
+
+.next-btn:hover,
+.publish-btn:hover,
+.back-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Editor */
+.editor-header {
+  background-color: var(--bg-primary);
+  border-bottom-color: var(--border-color);
+}
+
+.editor-nav h2 {
+  color: var(--text-primary);
+}
+
+.editor-nav p {
+  color: var(--text-secondary);
+}
+
+.editor-toolbar {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.toolbar-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.toolbar-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+.toolbar-btn.active {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+.toolbar-separator {
+  background-color: var(--border-color);
+}
+
+.blog-editor {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.blog-editor:focus {
+  border-color: var(--accent-color);
+}
+
+/* Toast notifications */
+.toast {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.toast.success {
+  background-color: var(--success-color);
+  color: var(--bg-primary);
+}
+
+.toast.error {
+  background-color: var(--danger-color);
+  color: var(--bg-primary);
+}

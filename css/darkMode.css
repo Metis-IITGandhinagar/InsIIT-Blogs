@@ -1,0 +1,301 @@
+/* Dark Mode CSS Variables and Styles */
+
+/* CSS Variables for light and dark themes */
+:root {
+  /* Light mode colors (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #fafafa;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --border-color: #e0e0e0;
+  --border-color-secondary: #ddd;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-heavy: rgba(0, 0, 0, 0.2);
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --danger-color: #e74c3c;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --navbar-shadow: rgba(128, 128, 128, 0.2);
+  --search-bg: #fafafa;
+  --search-focus-bg: #ffffff;
+  --blog-card-bg: #ffffff;
+  --highlight-bg: #ffeb3b;
+  --highlight-text: #333;
+  --dropdown-bg: #ffffff;
+  --button-bg: rgba(128, 128, 128, 0.18);
+  --user-bg: rgb(221, 122, 122);
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #333333;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-tertiary: #999999;
+  --border-color: #404040;
+  --border-color-secondary: #555555;
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --shadow-heavy: rgba(0, 0, 0, 0.5);
+  --accent-color: #4dabf7;
+  --accent-hover: #339af0;
+  --danger-color: #ff6b6b;
+  --success-color: #51cf66;
+  --warning-color: #ffd43b;
+  --navbar-shadow: rgba(0, 0, 0, 0.3);
+  --search-bg: #2d2d2d;
+  --search-focus-bg: #333333;
+  --blog-card-bg: #2d2d2d;
+  --highlight-bg: #ffd43b;
+  --highlight-text: #1a1a1a;
+  --dropdown-bg: #2d2d2d;
+  --button-bg: rgba(255, 255, 255, 0.1);
+  --user-bg: #ff8787;
+}
+
+/* Apply theme variables to body and common elements */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Toggle Switch Styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.theme-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.theme-switch input:checked + .theme-slider {
+  background-color: var(--accent-color);
+}
+
+.theme-switch input:checked + .theme-slider:before {
+  transform: translateX(26px);
+}
+
+.theme-switch input:focus + .theme-slider {
+  box-shadow: 0 0 1px var(--accent-color);
+}
+
+/* Icons for the toggle */
+.theme-icon {
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+
+.theme-icon.sun {
+  opacity: 1;
+}
+
+.theme-icon.moon {
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .theme-icon.sun {
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .theme-icon.moon {
+  opacity: 1;
+}
+
+/* Apply theme variables to existing elements */
+
+/* Navbar */
+#navbar {
+  background-color: var(--bg-primary);
+  box-shadow: 0 2px 8px var(--navbar-shadow);
+  color: var(--text-primary);
+}
+
+/* Search */
+#searchInput {
+  background-color: var(--search-bg);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+#searchInput:focus {
+  background-color: var(--search-focus-bg);
+  border-color: var(--accent-color);
+}
+
+#searchInput::placeholder {
+  color: var(--text-tertiary);
+}
+
+#clearSearch {
+  color: var(--text-tertiary);
+}
+
+#clearSearch:hover {
+  color: var(--text-secondary);
+}
+
+/* Buttons */
+#rightBox #createBlog {
+  color: var(--text-primary);
+  background: var(--button-bg);
+  border-color: var(--border-color);
+}
+
+#rightBox #createBlog:hover {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+#userIcon {
+  color: var(--text-primary);
+  background: var(--user-bg);
+  border-color: var(--border-color);
+}
+
+/* Dropdown */
+.user-dropdown {
+  background: var(--dropdown-bg);
+  border-color: var(--border-color-secondary);
+  box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.logout-btn, .dropdown-btn {
+  color: var(--text-primary);
+  border-bottom-color: var(--border-color);
+}
+
+.logout-btn:hover {
+  background-color: var(--bg-secondary);
+  color: var(--danger-color);
+}
+
+.dropdown-btn:hover {
+  background-color: var(--bg-secondary);
+  color: var(--accent-color);
+}
+
+/* Blog cards */
+.blog {
+  background: var(--blog-card-bg);
+  box-shadow: 0 2px 4px var(--shadow-light);
+  color: var(--text-primary);
+}
+
+.blog:hover {
+  box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
+.blog h3 {
+  color: var(--text-primary);
+}
+
+.blog p {
+  color: var(--text-secondary);
+}
+
+.read-more {
+  color: var(--accent-color);
+}
+
+.read-more:hover {
+  color: var(--accent-hover);
+}
+
+/* User status messages */
+.user-status-message {
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+}
+
+.no-blogs {
+  color: var(--text-secondary);
+}
+
+/* Search highlights */
+mark {
+  background-color: var(--highlight-bg);
+  color: var(--highlight-text);
+}
+
+/* Loading container */
+#loadingContainer {
+  background-color: var(--bg-primary);
+}
+
+/* Responsive adjustments for dark mode toggle */
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin-right: 0.5rem;
+    gap: 0.25rem;
+  }
+  
+  .theme-switch {
+    width: 40px;
+    height: 20px;
+  }
+  
+  .theme-slider:before {
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+  }
+  
+  .theme-switch input:checked + .theme-slider:before {
+    transform: translateX(20px);
+  }
+  
+  .theme-icon {
+    font-size: 1rem;
+  }
+}
+
+@media (orientation: portrait) {
+  .theme-toggle {
+    margin-right: 0.5rem;
+  }
+}

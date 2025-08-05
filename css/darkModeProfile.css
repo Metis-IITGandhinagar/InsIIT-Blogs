@@ -1,0 +1,101 @@
+/* Dark Mode Styles for Profile Page */
+
+/* Profile container */
+.profile-container {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.profile-card {
+  background-color: var(--bg-secondary);
+  box-shadow: 0 4px 20px var(--shadow-medium);
+}
+
+/* Profile header */
+.profile-header h1 {
+  color: var(--text-primary);
+}
+
+.profile-welcome {
+  color: var(--text-secondary);
+}
+
+/* Form elements */
+.form-group label {
+  color: var(--text-primary);
+}
+
+.form-input {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.form-input:focus {
+  border-color: var(--accent-color);
+  background-color: var(--bg-primary);
+}
+
+.form-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.field-note {
+  color: var(--text-tertiary);
+}
+
+/* Profile image */
+.profile-image-container {
+  border-color: var(--border-color);
+}
+
+/* My blogs section */
+.blogs-header h2 {
+  color: var(--text-primary);
+}
+
+.blog-count {
+  color: var(--text-secondary);
+  background-color: var(--bg-tertiary);
+}
+
+.user-blogs-container {
+  background-color: var(--bg-primary);
+}
+
+.loading-blogs {
+  color: var(--text-secondary);
+}
+
+.loading-blogs p {
+  color: var(--text-secondary);
+}
+
+/* Profile actions */
+.back-btn {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+}
+
+.back-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Loading overlay */
+.loading-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .loading-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.loading-content {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.loading-content p {
+  color: var(--text-secondary);
+}

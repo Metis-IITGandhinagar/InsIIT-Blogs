@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Test</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/homeStyles.css">
+    <link rel="stylesheet" href="css/darkMode.css">
+    <style>
+        body {
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .demo-content {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .demo-content h1 {
+            margin-bottom: 1rem;
+        }
+        .demo-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .blog-preview {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="logo">
+            <img src="assets/Logo.jpg" alt="Logo" style="height: 40px;">
+        </div>
+
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Search blogs..." />
+            <button id="clearSearch" title="Clear search">×</button>
+        </div>
+
+        <div id="rightBox">
+            <div id="createBlog">Create Blog</div>
+            <div id="userStatus"> 
+                <div id="userIcon">User</div>
+                <div id="userDropdown" class="user-dropdown">
+                    <div class="dropdown-btn">View Profile</div>
+                    <div class="logout-btn">Logout</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-content">
+        <h1>Dark Mode Test Page</h1>
+        <p>This is a test page to demonstrate the dark mode toggle functionality. The toggle should appear in the navbar and allow switching between light and dark themes.</p>
+        
+        <p>Features to test:</p>
+        <ul>
+            <li>Toggle switch in navbar</li>
+            <li>Smooth color transitions</li>
+            <li>LocalStorage persistence</li>
+            <li>System preference detection</li>
+        </ul>
+
+        <div class="blog-preview">
+            <div class="blog">
+                <img src="assets/placeholderImage.jpg" alt="Blog Image" class="blogImage">
+                <h3>Sample Blog Title</h3>
+                <p>This is a sample blog post description to test how blog cards look in both light and dark modes.</p>
+            </div>
+            <div class="blog">
+                <img src="assets/placeholderImage.jpg" alt="Blog Image" class="blogImage">
+                <h3>Another Blog Post</h3>
+                <p>Another sample blog post to fill the preview area and test the styling consistency.</p>
+            </div>
+        </div>
+
+        <p>Try toggling between light and dark modes using the switch in the navbar. The preference should be saved and persist when you refresh the page.</p>
+    </div>
+
+    <script src="js/darkMode.js"></script>
+</body>
+</html>

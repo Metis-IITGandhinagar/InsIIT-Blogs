@@ -1,0 +1,189 @@
+/* Dark Mode Styles for View Blog Page */
+
+/* Blog content container */
+.blog-content-container {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.blog-card {
+  background-color: var(--bg-secondary);
+  box-shadow: 0 4px 20px var(--shadow-medium);
+}
+
+/* Blog header */
+.blog-header h1 {
+  color: var(--text-primary);
+}
+
+.blog-subtitle {
+  color: var(--text-secondary);
+}
+
+.blog-meta {
+  color: var(--text-tertiary);
+  border-color: var(--border-color);
+}
+
+.blog-meta span {
+  color: var(--text-secondary);
+}
+
+/* Blog image */
+.blog-image-container {
+  border-color: var(--border-color);
+}
+
+/* Blog content */
+.blog-content {
+  color: var(--text-primary);
+}
+
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  color: var(--text-primary);
+}
+
+.blog-content p {
+  color: var(--text-primary);
+}
+
+.blog-content blockquote {
+  background-color: var(--bg-tertiary);
+  border-left-color: var(--accent-color);
+  color: var(--text-secondary);
+}
+
+.blog-content code {
+  background-color: var(--bg-tertiary);
+  color: var(--accent-color);
+}
+
+.blog-content pre {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.blog-content pre code {
+  color: var(--text-primary);
+}
+
+/* Blog actions */
+.blog-actions {
+  border-color: var(--border-color);
+}
+
+.action-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.action-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+.edit-btn {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+.edit-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.delete-btn {
+  background-color: var(--danger-color);
+  color: var(--bg-primary);
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Comments section */
+.comments-section {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.comments-header h3 {
+  color: var(--text-primary);
+}
+
+.comment-form {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.comment-input {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.comment-input:focus {
+  border-color: var(--accent-color);
+}
+
+.comment-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.submit-comment-btn {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+.submit-comment-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Individual comments */
+.comment {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+.comment-author {
+  color: var(--accent-color);
+}
+
+.comment-date {
+  color: var(--text-tertiary);
+}
+
+.comment-text {
+  color: var(--text-primary);
+}
+
+/* Navigation */
+.blog-navigation {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.nav-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.nav-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+}
+
+/* Loading states */
+.loading-blog {
+  color: var(--text-secondary);
+}
+
+.error-message {
+  background-color: var(--danger-color);
+  color: var(--bg-primary);
+}

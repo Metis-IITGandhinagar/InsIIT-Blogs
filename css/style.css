@@ -1,3 +1,11 @@
+/* Common Theme Variables */
+:root {
+  --accent-color: #4a90e2;
+  --accent-hover: #357abd;
+  --bg-primary: white;
+  --shadow-light: rgba(0, 0, 0, 0.2);
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -14,8 +22,9 @@
 	align-items: center;
 
 	/* New additions */
-	box-shadow: 0 2px 8px rgba(128, 128, 128, 0.2); /* Soft gray shadow */
+	box-shadow: 0 2px 8px var(--navbar-shadow, rgba(128, 128, 128, 0.2)); /* Soft gray shadow */
 	border-radius: 8px; /* Optional: rounded corners for style */
+	background-color: var(--bg-primary, #ffffff);
 }
 
 
@@ -65,22 +74,23 @@
 #searchInput {
 	width: 100%;
 	padding: 0.75rem 2.5rem 0.75rem 1rem;
-	border: 2px solid #e0e0e0;
+	border: 2px solid var(--border-color, #e0e0e0);
 	border-radius: 25px;
 	font-size: 1rem;
 	transition: all 0.3s ease;
 	outline: none;
-	background-color: #fafafa;
+	background-color: var(--search-bg, #fafafa);
+	color: var(--text-primary, #333333);
 }
 
 #searchInput:focus {
-	border-color: #007bff;
-	background-color: white;
+	border-color: var(--accent-color, #007bff);
+	background-color: var(--search-focus-bg, white);
 	box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 #searchInput::placeholder {
-	color: #999;
+	color: var(--text-tertiary, #999);
 }
 
 #clearSearch {
@@ -89,14 +99,14 @@
 	background: none;
 	border: none;
 	font-size: 1.5rem;
-	color: #999;
+	color: var(--text-tertiary, #999);
 	cursor: pointer;
 	transition: color 0.2s ease;
 	display: none;
 }
 
 #clearSearch:hover {
-	color: #666;
+	color: var(--text-secondary, #666);
 }
 
 #clearSearch.visible {
@@ -110,9 +120,9 @@
 }
 
 #rightBox #createBlog {
-	color: black;
-	background: rgba(128, 128, 128, 0.18);
-	border: 1px solid black;
+	color: var(--text-primary, black);
+	background: var(--button-bg, rgba(128, 128, 128, 0.18));
+	border: 1px solid var(--border-color, black);
 	border-radius: 12px;
 	padding: 0.5rem 1rem;
 	cursor: pointer;
@@ -133,9 +143,9 @@
 
 
 #userIcon {
-	color: black;
-	background: rgb(221, 122, 122);
-	border: 1px solid black;
+	color: var(--text-primary, black);
+	background: var(--user-bg, rgb(221, 122, 122));
+	border: 1px solid var(--border-color, black);
 	border-radius: 8px;
 	padding: 0.5rem 1rem;
 	cursor: pointer;
@@ -172,8 +182,8 @@
 	padding: 1rem;
 	margin: 1rem 0;
 	font-size: 1.1rem;
-	color: #666;
-	background: #f8f9fa;
+	color: var(--text-secondary, #666);
+	background: var(--bg-secondary, #f8f9fa);
 	border-radius: 8px;
 	max-width: 600px;
 	margin: 1rem auto;
@@ -189,10 +199,10 @@
 	position: absolute;
 	top: 100%;
 	right: 0;
-	background: white;
-	border: 1px solid #ddd;
+	background: var(--dropdown-bg, white);
+	border: 1px solid var(--border-color-secondary, #ddd);
 	border-radius: 8px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 4px 12px var(--shadow-medium, rgba(0, 0, 0, 0.15));
 	opacity: 0;
 	visibility: hidden;
 	transform: translateY(-10px);
@@ -210,22 +220,22 @@
 
 .logout-btn, .dropdown-btn {
 	padding: 0.75rem 1rem;
-	color: #333;
+	color: var(--text-primary, #333);
 	cursor: pointer;
 	transition: background-color 0.2s ease;
 	text-align: center;
 	font-size: 0.9rem;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid var(--border-color, #eee);
 }
 
 .logout-btn:hover {
-	background-color: #f5f5f5;
-	color: #e74c3c;
+	background-color: var(--bg-secondary, #f5f5f5);
+	color: var(--danger-color, #e74c3c);
 }
 
 .dropdown-btn:hover {
-	background-color: #f5f5f5;
-	color: #007bff;
+	background-color: var(--bg-secondary, #f5f5f5);
+	color: var(--accent-color, #007bff);
 }
 
 .dropdown-btn:last-child, .logout-btn:last-child {
