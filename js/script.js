@@ -194,7 +194,7 @@ async function loadUserBlogs() {
 				<div class="no-blogs-message">
 					<h3>No blogs yet</h3>
 					<p>You haven't created any blogs yet. Start sharing your thoughts with the world!</p>
-					<a href="createBlog.html" class="create-first-blog-btn">Create Your First Blog</a>
+					<button onclick="navigateToCreateBlog()" class="create-first-blog-btn">Create Your First Blog</button>
 				</div>
 			`;
 		} else {
@@ -448,6 +448,15 @@ function showNotification(message, type = 'info') {
 	}, 3000);
 }
 
-
+// Function to navigate to create blog with authentication check
+window.navigateToCreateBlog = function() {
+	if (currentUser) {
+		// User is authenticated, allow navigation
+		window.location.href = 'createBlog.html';
+	} else {
+		// Optionally trigger sign-in
+		signInWithGoogle();
+	}
+}
 
 export default auth

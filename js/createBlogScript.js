@@ -1,6 +1,17 @@
 import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js'
 import auth from './script.js'
 import app from './firebaseSetup.js'
+
+// Additional authentication check
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        // User is not authenticated, redirect to home page
+        alert('Authentication required. Redirecting to home page.');
+        window.location.href = 'index.html';
+        return;
+    }
+});
 
 // Toast notification function
 function showToast(message, type = 'success') {
@@ -69,6 +80,12 @@ function populateUserData() {
 
 // Step navigation
 nextToBodyBtn.addEventListener('click', () => {
+    if (!auth.currentUser) {
+        alert('Authentication required. Redirecting to home page.');
+        window.location.href = 'index.html';
+        return;
+    }
+    
     if (validateDetailsForm()) {
         saveDetailsData();
         showBodyStep();
@@ -76,6 +93,12 @@ nextToBodyBtn.addEventListener('click', () => {
 });
 
 backToDetailsBtn.addEventListener('click', () => {
+    if (!auth.currentUser) {
+        alert('Authentication required. Redirecting to home page.');
+        window.location.href = 'index.html';
+        return;
+    }
+    
     showDetailsStep();
 });
 

@@ -12,6 +12,21 @@
   <script src="js/firebaseSetup.js" defer type="module"></script>
   <script src="js/script.js" defer type="module"></script>
   <script src="js/createBlogScript.js" defer type="module"></script>
+  
+  <!-- Authentication check script -->
+  <script type="module">
+    import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js';
+    import app from './js/firebaseSetup.js';
+    
+    const auth = getAuth(app);
+    
+    // Check authentication status
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
   </head>
   <body>
 	  <div id="navbar">
