@@ -1,63 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>InsIIT-Blogs</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/homeStyles.css">
-    <link rel="stylesheet" href="css/darkMode.css">
-    <link rel="icon" type="image/png" href="assets/favicon.ico">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>InsIIT-Blogs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/homeStyles.css">
+  <link rel="stylesheet" href="css/darkMode.css">
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
   <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
   <script src="js/firebaseSetup.js" defer type="module"></script>
   <script src="js/script.js" defer type="module"></script>
   <script src="js/blogsScript.js" defer type="module"></script>
   <script src="js/darkMode.js" defer></script>
-  </head>
-  <body>
-	  <div id="navbar">
-		  <div id="logo">
-        <a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+  </style>
+</head>
+
+<body>
+  <div class="mobilebar">
+    <input type="checkbox" id="menuToggle">
+    <label for="menuToggle" class="hamburger">&#9776;</label>
+
+    <div id="mobileMenu">
+      <div id="searchContaine">
+        <input type="text" id="searchInput" placeholder="Search blogs..." />
+        <button id="clearSearch" title="Clear search">×</button>
       </div>
 
-		  <div id="searchContainer">
-			  <input type="text" id="searchInput" placeholder="Search blogs..." />
-			  <button id="clearSearch" title="Clear search">×</button>
-		  </div>
+      <a href="createBlog.html">Create Blog</a>
+      <div class="dropdown-btn " id="viewProfileButton"><a href=""></a>View Profile</div>
+      <div class="logout-btn" id="logoutButton">Logout</div>
 
-		  <div id="rightBox">
-			  <a href="createBlog.html"><div id="createBlog"> Create Blog </div></a>
-        <div id="userStatus"> 
-			  <div id="userIcon">User</div>
-			  <div id="userDropdown" class="user-dropdown">
-				  <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
-				  <div id="logoutButton" class="logout-btn">Logout</div>
-			  </div>
-		  </div>
-		  </div>
-	  </div>
-	
+    </div>
+  </div>
+  <div id="navbar">
+    <div id="logo">
+      <span><a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a></span>
+      <span>InsIIT</span>
+    </div>
 
-	  <div id="blogs">
-		  <div id="loadingContainer">
-			  <img id="loadingImage" src="assets/loadingImage.gif">
-		  </div>
-		  <p id="user-email" class="user-status-message"></p>
-	  </div>
+    <div id="searchContainer">
+      <input type="text" id="searchInput" placeholder="Search blogs..." />
+      <button id="clearSearch" title="Clear search">×</button>
+    </div>
+
+    <div id="rightBox">
+      <a href="createBlog.html">
+        <div id="createBlog"> Create Blog </div>
+      </a>
+      <div id="userStatus">
+        <div id="userIcon">User</div>
+        <div id="userDropdown" class="user-dropdown">
+          <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
+          <div id="logoutButton" class="logout-btn"><a href="index.html"></a>Logout</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="blogs">
+    <div id="loadingContainer">
+      <img id="loadingImage" src="assets/loadingImage.gif">
+    </div>
+    <p id="user-email" class="user-status-message"></p>
+  </div>
 
 
 
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top" aria-label="Back to top">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 15l-6-6-6 6"/>
-      </svg>
-    </button>
-    
-    <!-- Back to Top Script -->
-    <script src="js/back-to-top.js" defer></script>
-  </body>
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6" />
+    </svg>
+  </button>
+
+  <!-- Back to Top Script -->
+  <script src="js/back-to-top.js" defer></script>
+
+</body>
+
 </html>
 

@@ -18,21 +18,46 @@
   <script src="js/darkMode.js" defer></script>
   </head>
   <body>
-	  <div id="navbar">
-		  <div id="logo">
-			<a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
-		</div>
+	 <div class="mobilebar">
+    <input type="checkbox" id="menuToggle">
+    <label for="menuToggle" class="hamburger">&#9776;</label>
 
-		  <div id="rightBox">
-			  <div id="userStatus"> 
-			  <div id="userIcon">User</div>
-			  <div id="userDropdown" class="user-dropdown">
-				  <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
-				  <div id="logoutButton" class="logout-btn">Logout</div>
-			  </div>
-		  </div>
-		  </div>
-	  </div>
+    <div id="mobileMenu">
+      <div id="searchContaine">
+        <input type="text" id="searchInput" placeholder="Search blogs..." />
+        <button id="clearSearch" title="Clear search">×</button>
+      </div>
+
+      <a href="createBlog.html">Create Blog</a>
+      <div class="dropdown-btn" id="viewProfileButton">View Profile</div>
+      <div class="logout-btn" id="logoutButton">Logout</div>
+
+    </div>
+  </div>
+  <div id="navbar">
+    <div id="logo">
+      <span><a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a></span>
+      <span>InsIIT</span>
+    </div>
+
+    <div id="searchContainer">
+      <input type="text" id="searchInput" placeholder="Search blogs..." />
+      <button id="clearSearch" title="Clear search">×</button>
+    </div>
+
+    <div id="rightBox">
+      <a href="createBlog.html">
+        <div id="createBlog"> Create Blog </div>
+      </a>
+      <div id="userStatus">
+        <div id="userIcon">User</div>
+        <div id="userDropdown" class="user-dropdown">
+          <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
+          <div id="logoutButton" class="logout-btn">Logout</div>
+        </div>
+      </div>
+    </div>
+  </div>
 	
 
 	  <!-- Step 1: Blog Details Form -->
