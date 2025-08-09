@@ -1,63 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>InsIIT-Blogs</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/homeStyles.css">
-    <link rel="stylesheet" href="css/darkMode.css">
-    <link rel="icon" type="image/png" href="assets/favicon.ico">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>InsIIT-Blogs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/homeStyles.css">
+  <link rel="stylesheet" href="css/darkMode.css">
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
   <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
   <script src="js/firebaseSetup.js" defer type="module"></script>
   <script src="js/script.js" defer type="module"></script>
   <script src="js/blogsScript.js" defer type="module"></script>
   <script src="js/darkMode.js" defer></script>
-  </head>
-  <body>
-	  <div id="navbar">
-		  <div id="logo">
-        <a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
+</head>
+
+<body>
+  <div id="navbar">
+    <div id="logo">
+      <a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
+    </div>
+
+    <div id="searchContainer">
+      <input type="text" id="searchInput" placeholder="Search blogs..." />
+      <button id="clearSearch" title="Clear search">×</button>
+    </div>
+
+    <div id="rightBox">
+      <a href="createBlog.html">
+        <div id="createBlog"> Create Blog </div>
+      </a>
+      <div id="userStatus">
+        <div id="userIcon">User</div>
+        <div id="userDropdown" class="user-dropdown">
+          <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
+          <div id="logoutButton" class="logout-btn">Logout</div>
+        </div>
       </div>
-
-		  <div id="searchContainer">
-			  <input type="text" id="searchInput" placeholder="Search blogs..." />
-			  <button id="clearSearch" title="Clear search">×</button>
-		  </div>
-
-		  <div id="rightBox">
-			  <a href="createBlog.html"><div id="createBlog"> Create Blog </div></a>
-        <div id="userStatus"> 
-			  <div id="userIcon">User</div>
-			  <div id="userDropdown" class="user-dropdown">
-				  <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
-				  <div id="logoutButton" class="logout-btn">Logout</div>
-			  </div>
-		  </div>
-		  </div>
-	  </div>
-	
-
-	  <div id="blogs">
-		  <div id="loadingContainer">
-			  <img id="loadingImage" src="assets/loadingImage.gif">
-		  </div>
-		  <p id="user-email" class="user-status-message"></p>
-	  </div>
+    </div>
+  </div>
 
 
+  <div id="blogs">
+    <div id="loadingContainer">
+      <img id="loadingImage" src="assets/loadingImage.gif">
+    </div>
+    <p id="user-email" class="user-status-message"></p>
+  </div>
 
-
+  <div id="footer">
+    <div id="footer-content">
+      <div id="about">
+        <h2>About</h2>
+        <p>This is a blogging website for people in IIT Gandhinagar. This project is made under the Clash of Commits
+          competition by Metis IIT Gandhinagar. </p>
+          <br/>
+        <p>Email: metis@iitgn.ac.in</p>
+      </div>
+      <div id="contributors">
+        <h2>Contribution</h2>
+        <a href="" target="_blank">List of Contributors</a>
+        <br/> <br/>
+        <a href="https://github.com/Metis-IITGandhinagar/InsIIT-Blogs" target="_blank">Contribute</a>
+        <br/> <br/>
+        <a href="https://github.com/Metis-IITGandhinagar" target="_blank">Visit Metis IITGN</a>
+        
+      </div>
+    </div>
+    
+    <p id="metis">Made with ❤️ by Metis, IITGN</p>
+    
     <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 15l-6-6-6 6"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 15l-6-6-6 6" />
       </svg>
-    </button>
-    
-    <!-- Back to Top Script -->
-    <script src="js/back-to-top.js" defer></script>
-  </body>
-</html>
+    </button>    
+  </div>
 
+
+
+
+  <!-- Back to Top Script -->
+  <script src="js/back-to-top.js" defer></script>
+</body>
+
+</html>

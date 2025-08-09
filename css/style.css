@@ -1,9 +1,9 @@
 /* Common Theme Variables */
 :root {
-  --accent-color: #4a90e2;
-  --accent-hover: #357abd;
-  --bg-primary: white;
-  --shadow-light: rgba(0, 0, 0, 0.2);
+	--accent-color: #4a90e2;
+	--accent-hover: #357abd;
+	--bg-primary: white;
+	--shadow-light: rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -22,8 +22,10 @@
 	align-items: center;
 
 	/* New additions */
-	box-shadow: 0 2px 8px var(--navbar-shadow, rgba(128, 128, 128, 0.2)); /* Soft gray shadow */
-	border-radius: 8px; /* Optional: rounded corners for style */
+	box-shadow: 0 2px 8px var(--navbar-shadow, rgba(128, 128, 128, 0.2));
+	/* Soft gray shadow */
+	border-radius: 8px;
+	/* Optional: rounded corners for style */
 	background-color: var(--bg-primary, #ffffff);
 }
 
@@ -127,8 +129,9 @@
 	padding: 0.5rem 1rem;
 	cursor: pointer;
 	transition: all 0.3s ease;
-	text-decoration: none; /* removes underline */
-	display: inline-block; 
+	text-decoration: none;
+	/* removes underline */
+	display: inline-block;
 }
 
 #rightBox #createBlog:hover {
@@ -161,7 +164,8 @@
 #userIcon.profile-image {
 	padding: 0;
 	background: transparent;
-	border: none; /* Hide border */
+	border: none;
+	/* Hide border */
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
@@ -174,7 +178,8 @@
 	object-fit: cover;
 	border-radius: 50%;
 	display: block;
-	border: none; /* Ensure no inner border */
+	border: none;
+	/* Ensure no inner border */
 }
 
 .user-status-message {
@@ -218,7 +223,8 @@
 	transform: translateY(0);
 }
 
-.logout-btn, .dropdown-btn {
+.logout-btn,
+.dropdown-btn {
 	padding: 0.75rem 1rem;
 	color: var(--text-primary, #333);
 	cursor: pointer;
@@ -238,8 +244,54 @@
 	color: var(--accent-color, #007bff);
 }
 
-.dropdown-btn:last-child, .logout-btn:last-child {
+.dropdown-btn:last-child,
+.logout-btn:last-child {
 	border-bottom: none;
+}
+
+#footer {
+	padding: 2rem;
+	box-shadow: 0 2px 16px var(--navbar-shadow, rgba(58, 58, 58, 0.2));
+	/* Soft gray shadow */
+	background-color: var(--bg-secondary, #ffffff);
+}
+
+#footer-content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: left;
+	gap: 4rem;
+	padding-bottom: 2rem;
+	text-align: justify;
+}
+
+#footer-content h2{
+	padding-bottom: 1rem;
+}
+
+#about {
+	flex:2;
+}
+
+#contributors {
+	flex:1;
+}
+
+#contributors a{
+	color: var(--text-primary);
+	text-decoration: none;
+}
+
+#contributors a:hover{
+	color: var(--text-secondary);
+	text-decoration: none;
+}
+
+#metis {
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 1rem;
 }
 
 @media (orientation: portrait) {
@@ -247,21 +299,21 @@
 		margin: 0 1rem;
 		max-width: 200px;
 	}
-	
+
 	#searchInput {
 		padding: 0.5rem 2rem 0.5rem 0.75rem;
 		font-size: 0.9rem;
 	}
-	
+
 	#clearSearch {
 		right: 0.5rem;
 		font-size: 1.3rem;
 	}
-	
+
 	#rightBox {
 		gap: 1rem;
 	}
-	
+
 
 }
 
@@ -270,34 +322,38 @@
 		margin: 0 0.5rem;
 		max-width: 150px;
 	}
-	
+
 	#searchInput {
 		padding: 0.4rem 1.8rem 0.4rem 0.6rem;
 		font-size: 0.85rem;
 	}
-	
+
 	#searchInput::placeholder {
 		font-size: 0.8rem;
 	}
-	
+
 	#rightBox {
 		gap: 0.5rem;
 	}
-	
+
 	#rightBox #createBlog {
 		padding: 0.4rem 0.8rem;
 		font-size: 0.85rem;
 	}
-	
-	
+
+
 	.user-dropdown {
 		right: -10px;
 		min-width: 100px;
 	}
-	
+
 	.logout-btn {
 		padding: 0.6rem 0.8rem;
 		font-size: 0.85rem;
 	}
-}
 
+	#footer-content {
+		padding-bottom: 4rem;
+		flex-direction: column;
+	}
+}

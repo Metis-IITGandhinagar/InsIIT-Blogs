@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
     <script src="js/profileScript.js" defer type="module"></script>
     <script src="js/darkMode.js" defer></script>
 </head>
+
 <body>
     <div id="navbar">
         <div id="logo">
@@ -27,8 +29,10 @@
         </div>
 
         <div id="rightBox">
-            <a href="createBlog.html"><div id="createBlog"> Create Blog </div></a>
-            <div id="userStatus"> 
+            <a href="createBlog.html">
+                <div id="createBlog"> Create Blog </div>
+            </a>
+            <div id="userStatus">
                 <div id="userIcon">User</div>
                 <div id="userDropdown" class="user-dropdown">
                     <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
@@ -44,7 +48,7 @@
                 <h1>User Profile</h1>
                 <p id="user-email" class="profile-welcome">Loading...</p>
             </div>
-            
+
             <div class="profile-content">
                 <div class="profile-image-section">
                     <div class="profile-image-container">
@@ -56,11 +60,14 @@
                     <div class="form-group">
                         <label for="displayName">Full Name</label>
                         <div class="input-with-buttons">
-                            <input type="text" id="displayName" class="form-input editable-field" placeholder="Enter your full name" readonly>
+                            <input type="text" id="displayName" class="form-input editable-field"
+                                placeholder="Enter your full name" readonly>
                             <div class="field-buttons">
                                 <button type="button" class="edit-btn" data-field="displayName">Edit</button>
-                                <button type="button" class="save-btn" data-field="displayName" style="display: none;">Save</button>
-                                <button type="button" class="cancel-btn" data-field="displayName" style="display: none;">Cancel</button>
+                                <button type="button" class="save-btn" data-field="displayName"
+                                    style="display: none;">Save</button>
+                                <button type="button" class="cancel-btn" data-field="displayName"
+                                    style="display: none;">Cancel</button>
                             </div>
                         </div>
                         <small class="field-note">Click edit to change your full name</small>
@@ -69,11 +76,14 @@
                     <div class="form-group">
                         <label for="username">Username</label>
                         <div class="input-with-buttons">
-                            <input type="text" id="username" class="form-input editable-field" placeholder="Username (defaults to email)" readonly>
+                            <input type="text" id="username" class="form-input editable-field"
+                                placeholder="Username (defaults to email)" readonly>
                             <div class="field-buttons">
                                 <button type="button" class="edit-btn" data-field="username">Edit</button>
-                                <button type="button" class="save-btn" data-field="username" style="display: none;">Save</button>
-                                <button type="button" class="cancel-btn" data-field="username" style="display: none;">Cancel</button>
+                                <button type="button" class="save-btn" data-field="username"
+                                    style="display: none;">Save</button>
+                                <button type="button" class="cancel-btn" data-field="username"
+                                    style="display: none;">Cancel</button>
                             </div>
                         </div>
                         <small class="field-note">Click edit to change your username</small>
@@ -108,6 +118,41 @@
         </div>
     </div>
 
+    <div id="footer">
+        <div id="footer-content">
+            <div id="about">
+                <h2>About</h2>
+                <p>This is a blogging website for people in IIT Gandhinagar. This project is made under the Clash of
+                    Commits
+                    competition by Metis IIT Gandhinagar. </p>
+                <br />
+                <p>Email: metis@iitgn.ac.in</p>
+            </div>
+            <div id="contributors">
+                <h2>Contribution</h2>
+                <a href="" target="_blank">List of Contributors</a>
+                <br /> <br />
+                <a href="https://github.com/Metis-IITGandhinagar/InsIIT-Blogs" target="_blank">Contribute</a>
+                <br /> <br />
+                <a href="https://github.com/Metis-IITGandhinagar" target="_blank">Visit Metis IITGN</a>
+
+            </div>
+        </div>
+
+        <p id="metis">Made with ❤️ by Metis, IITGN</p>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop" class="back-to-top" aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Back to Top Script -->
+    <script src="js/back-to-top.js" defer></script>
+
     <!-- Loading overlay -->
     <div id="loadingOverlay" class="loading-overlay" style="display: none;">
         <div class="loading-content">
@@ -116,4 +161,5 @@
         </div>
     </div>
 </body>
+
 </html>
