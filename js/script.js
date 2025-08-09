@@ -119,6 +119,11 @@ auth.onAuthStateChanged((user) => {
 		//     Profile functionality moved to profileScript.js
 		// }
 
+		// Load author profile data if on author page
+		if (window.location.pathname.includes('author.html')) {
+			loadAuthorProfile();
+		}
+
 	} else {
 		// User is signed out.
 		console.log("No user signed in.");
@@ -157,17 +162,15 @@ function goToProfile() {
 
 
 
-// Profile editing functionality moved to profileScript.js
 
-// Save field functionality moved to profileScript.js
 
 // Cancel edit functionality moved to profileScript.js
 
-// Username generation moved to profileScript.js
-
 // Utility functions moved to profileScript.js
 
+
 // showNotification function moved to profileScript.js
+
 
 
 

@@ -99,3 +99,71 @@
 .loading-content p {
   color: var(--text-secondary);
 }
+
+/* Author Blogs Section Dark Mode */
+.author-blogs-section {
+  border-top-color: var(--border-color);
+}
+
+.author-blogs-section h3 {
+  color: var(--text-primary);
+}
+
+.blog-card {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.blog-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 20px var(--shadow-medium);
+}
+
+.blog-header h4 a {
+  color: var(--accent-color);
+}
+
+.blog-header h4 a:hover {
+  color: var(--accent-hover);
+}
+
+.blog-subtitle {
+  color: var(--text-secondary);
+}
+
+.blog-date {
+  color: var(--text-tertiary);
+}
+
+.blog-preview {
+  color: var(--text-secondary);
+}
+
+.no-blogs {
+  background-color: var(--bg-tertiary);
+  color: var(--text-tertiary);
+  border-color: var(--border-color);
+}
+
+.loading-message {
+  color: var(--text-secondary);
+}
+
+.error-message {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border-color: var(--error-border);
+}
+
+.error-message h3 {
+  color: var(--error-text);
+}
+
+.error-message .btn {
+  background-color: var(--accent-color);
+}
+
+.error-message .btn:hover {
+  background-color: var(--accent-hover);
+}

@@ -108,7 +108,16 @@ async function loadBlog() {
       // Update blog content
       blogTitle.textContent = blogData.title || 'Untitled'
       subline.textContent = blogData.subtitle || ''
-      author.textContent = `By ${blogData.author || 'Unknown Author'}`
+      
+      // Create clickable author link
+      const authorEmail = blogData.authorEmail;
+      const authorName = blogData.author || 'Unknown Author';
+      
+      if (authorEmail) {
+        author.innerHTML = `By <a href="author.html?email=${encodeURIComponent(authorEmail)}" class="author-link" title="View ${authorName}'s profile">${authorName}</a>`;
+      } else {
+        author.textContent = `By ${authorName}`;
+      }
       
       // Parse and display blog content
       const contentType = blogData.contentType || 'html';

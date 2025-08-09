@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
+import { getFirestore, collection, addDoc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
 import auth from './script.js'
 import app from './firebaseSetup.js'
 
@@ -310,13 +310,32 @@ document.getElementById('previewModal').addEventListener('click', (e) => {
     }
 });
 
-function populateUserData() {
+async function populateUserData() {
     const authorNameInput = document.getElementById('authorName');
     const usernameInput = document.getElementById('username');
     
     if (auth.currentUser) {
-        authorNameInput.value = auth.currentUser.displayName || 'Anonymous User';
-        usernameInput.value = auth.currentUser.email?.split('@')[0] || 'anonymous';
+        try {
+            // Try to get current user data from authors collection
+            const authorsRef = collection(firestore, 'authors');
+            const q = query(authorsRef, where('email', '==', auth.currentUser.email));
+            const querySnapshot = await getDocs(q);
+            
+            if (!querySnapshot.empty) {
+                const userData = querySnapshot.docs[0].data();
+                authorNameInput.value = userData.displayName || auth.currentUser.displayName || 'Anonymous User';
+                usernameInput.value = userData.username || auth.currentUser.email?.split('@')[0] || 'anonymous';
+            } else {
+                // Fallback to auth data if not found in authors collection
+                authorNameInput.value = auth.currentUser.displayName || 'Anonymous User';
+                usernameInput.value = auth.currentUser.email?.split('@')[0] || 'anonymous';
+            }
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            // Fallback to auth data on error
+            authorNameInput.value = auth.currentUser.displayName || 'Anonymous User';
+            usernameInput.value = auth.currentUser.email?.split('@')[0] || 'anonymous';
+        }
     }
 }
 

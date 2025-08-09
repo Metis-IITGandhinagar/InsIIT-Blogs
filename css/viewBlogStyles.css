@@ -13,6 +13,26 @@
   font-size: 0.9rem;
 }
 
+.blog-meta .author {
+  color: #666;
+  font-style: italic;
+}
+
+.blog-meta .author-link {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.blog-meta .author-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.blog-meta .date {
+  color: #666;
+}
+
 .blog-content {
   line-height: 1.8;
   font-size: 1.1rem;

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Author Profile - InsIIT-Blogs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profileStyles.css">
+    <link rel="stylesheet" href="css/darkMode.css">
+    <link rel="stylesheet" href="css/darkModeProfile.css">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
+    <script src="js/firebaseSetup.js" defer type="module"></script>
+    <script src="js/script.js" defer type="module"></script>
+    <script src="js/authorScript.js" defer type="module"></script>
+    <script src="js/darkMode.js" defer></script>
+</head>
+<body>
+    <div id="navbar">
+        <div id="logo">
+            <a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
+        </div>
+
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Search blogs..." />
+            <button id="clearSearch" title="Clear search">×</button>
+        </div>
+
+        <div id="rightBox">
+            <a href="createBlog.html"><div id="createBlog"> Create Blog </div></a>
+            <div id="userStatus"> 
+                <div id="userIcon">User</div>
+                <div id="userDropdown" class="user-dropdown">
+                    <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
+                    <div id="logoutButton" class="logout-btn">Logout</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <h1 id="authorProfileTitle">Author Profile</h1>
+                <p id="author-email" class="profile-welcome">Loading...</p>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-image-section">
+                    <div class="profile-image-container">
+                        <img id="authorProfileImage" src="assets/placeholderImage.jpg" alt="Profile Image">
+                    </div>
+                </div>
+
+                <div class="author-info">
+                    <div class="info-group">
+                        <label>Display Name</label>
+                        <p id="authorDisplayName" class="info-value">Loading...</p>
+                    </div>
+
+                    <div class="info-group">
+                        <label>Username</label>
+                        <p id="authorUsername" class="info-value">Loading...</p>
+                    </div>
+
+                    <div class="info-group">
+                        <label>Bio</label>
+                        <p id="authorBio" class="info-value">Loading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Author's Blogs Section -->
+            <div class="my-blogs-section">
+                <div class="blogs-header">
+                    <h2 id="authorBlogsTitle">Author's Blogs</h2>
+                    <span id="authorBlogCount" class="blog-count">0 blogs</span>
+                </div>
+                <div id="authorBlogs" class="user-blogs-container">
+                    <div class="loading-blogs">
+                        <img src="assets/loadingImage.gif" alt="Loading...">
+                        <p>Loading author's blogs...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <a href="index.html" class="back-btn">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <img src="assets/loadingImage.gif" alt="Loading...">
+            <p>Loading author profile...</p>
+        </div>
+    </div>
+</body>
+</html>
