@@ -83,7 +83,7 @@ function setupMarkdownEditor() {
         padding: 20px;
         font-size: 1.1rem;
         line-height: 1.7;
-        color: #333;
+        color: var(--text-primary);
         border: none;
         outline: none;
         resize: vertical;
