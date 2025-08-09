@@ -225,6 +225,14 @@ async function saveField(fieldName) {
 		if (userDocId) {
 			// Update existing document
 			await updateDoc(doc(db, 'authors', userDocId), updateData);
+
+			
+			// If displayName was updated, sync it across all blogs
+			if (fieldName === 'displayName') {
+				console.log("Syncing displayName across all blogs...");
+				await syncDisplayNameInBlogs(currentUser.email, newValue);
+			}
+
 		} else {
 			// Create new document if it doesn't exist
 			const displayNameInput = document.getElementById('displayName');
@@ -451,6 +459,12 @@ function showNotification(message, type = 'info') {
 		case 'error':
 			notification.style.background = '#dc3545';
 			break;
+
+		case 'warning':
+			notification.style.background = '#ffc107';
+			notification.style.color = '#212529';
+			break;
+
 		default:
 			notification.style.background = '#007bff';
 	}
@@ -473,6 +487,202 @@ function showNotification(message, type = 'info') {
 	}, 3000);
 }
 
+
+// Author profile page functionality
+async function loadAuthorProfile() {
+	try {
+		console.log("Loading author profile...");
+		showLoading(true);
+		
+		// Get author email from URL parameters
+		const urlParams = new URLSearchParams(window.location.search);
+		const authorEmail = urlParams.get('email');
+		
+		if (!authorEmail) {
+			showNotification('No author email provided', 'error');
+			window.location.href = 'index.html';
+			return;
+		}
+		
+		console.log("Loading author profile for email:", authorEmail);
+		
+		// Find author document
+		const authorsRef = collection(db, 'authors');
+		const q = query(authorsRef, where('email', '==', authorEmail));
+		const querySnapshot = await getDocs(q);
+		
+		if (querySnapshot.empty) {
+			console.log('Author not found');
+			showNotification('Author profile not found', 'error');
+			window.location.href = 'index.html';
+			return;
+		}
+		
+		const authorDoc = querySnapshot.docs[0];
+		const authorData = authorDoc.data();
+		console.log("Author data found:", authorData);
+		
+		// Update page elements
+		const authorProfileTitle = document.getElementById('authorProfileTitle');
+		const authorEmailElement = document.getElementById('author-email');
+		const authorProfileImage = document.getElementById('authorProfileImage');
+		const authorDisplayName = document.getElementById('authorDisplayName');
+		const authorUsername = document.getElementById('authorUsername');
+		const authorBio = document.getElementById('authorBio');
+		const authorBlogsTitle = document.getElementById('authorBlogsTitle');
+		
+		// Set profile information
+		if (authorProfileTitle) authorProfileTitle.textContent = `${authorData.displayName || authorData.username || 'Author'}'s Profile`;
+		if (authorEmailElement) authorEmailElement.textContent = `Author: ${authorData.displayName || authorData.username || authorEmail}`;
+		if (authorProfileImage) authorProfileImage.src = authorData.imageUrl || 'assets/placeholderImage.jpg';
+		if (authorDisplayName) authorDisplayName.textContent = authorData.displayName || 'Not provided';
+		if (authorUsername) authorUsername.textContent = authorData.username || generateUsernameFromEmail(authorEmail);
+		if (authorBio) authorBio.textContent = authorData.bio || 'No bio provided';
+		if (authorBlogsTitle) authorBlogsTitle.textContent = `${authorData.displayName || authorData.username || 'Author'}'s Blogs`;
+		
+		// Load author's blogs
+		await loadAuthorBlogs(authorEmail);
+		
+	} catch (error) {
+		console.error('Error loading author profile:', error);
+		showNotification('Error loading author profile', 'error');
+	} finally {
+		showLoading(false);
+	}
+}
+
+// Load author's blogs for author profile page
+async function loadAuthorBlogs(authorEmail) {
+	try {
+		console.log("Loading blogs for author:", authorEmail);
+		
+		const authorBlogsContainer = document.getElementById('authorBlogs');
+		const authorBlogCountElement = document.getElementById('authorBlogCount');
+		
+		if (!authorBlogsContainer || !authorBlogCountElement) {
+			console.log("Author blog container elements not found");
+			return;
+		}
+
+		// Show loading state
+		authorBlogsContainer.innerHTML = `
+			<div class="loading-blogs">
+				<img src="assets/loadingImage.gif" alt="Loading...">
+				<p>Loading author's blogs...</p>
+			</div>
+		`;
+
+		// Query author's blogs from blogsRef collection
+		const blogsRef = collection(db, 'blogsRef');
+		const q = query(blogsRef, where('authorEmail', '==', authorEmail));
+		const querySnapshot = await getDocs(q);
+		
+		console.log(`Found ${querySnapshot.size} blogs for author`);
+
+		// Update blog count
+		const blogCount = querySnapshot.size;
+		authorBlogCountElement.textContent = `${blogCount} blog${blogCount !== 1 ? 's' : ''}`;
+
+		if (querySnapshot.empty) {
+			// No blogs found
+			authorBlogsContainer.innerHTML = `
+				<div class="no-blogs-message">
+					<h3>No blogs yet</h3>
+					<p>This author hasn't published any blogs yet.</p>
+				</div>
+			`;
+		} else {
+			// Display blogs in grid
+			let blogsHTML = '<div class="blogs-grid">';
+			
+			querySnapshot.forEach((doc) => {
+				const blogData = doc.data();
+				const blogDate = blogData.createdAt ? new Date(blogData.createdAt).toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'short',
+					day: 'numeric'
+				}) : 'Unknown date';
+
+				blogsHTML += `
+					<div class="user-blog-card" onclick="window.open('viewBlog.html?blogId=${blogData.blogId}', '_blank')">
+						<div class="blog-card-header">
+							<h3 class="blog-card-title">${blogData.title || 'Untitled'}</h3>
+							<p class="blog-card-date">${blogDate}</p>
+						</div>
+						<p class="blog-card-subline">${blogData.subtitle || 'No description available'}</p>
+						<div class="blog-card-footer">
+							<span class="blog-card-stats">Published</span>
+							<div class="blog-card-actions">
+								<a href="viewBlog.html?blogId=${blogData.blogId}" class="view-blog-btn" onclick="event.stopPropagation()">View Blog</a>
+							</div>
+						</div>
+					</div>
+				`;
+			});
+			
+			blogsHTML += '</div>';
+			authorBlogsContainer.innerHTML = blogsHTML;
+		}
+
+	} catch (error) {
+		console.error('Error loading author blogs:', error);
+		const authorBlogsContainer = document.getElementById('authorBlogs');
+		if (authorBlogsContainer) {
+			authorBlogsContainer.innerHTML = `
+				<div class="no-blogs-message">
+					<h3>Error loading blogs</h3>
+					<p>There was an error loading the author's blogs. Please refresh the page and try again.</p>
+				</div>
+			`;
+		}
+	}
+}
+
+// Function to sync displayName across all blogs when user updates their name
+async function syncDisplayNameInBlogs(authorEmail, newDisplayName) {
+	try {
+		console.log(`Syncing displayName "${newDisplayName}" for all blogs by ${authorEmail}`);
+		
+		// Update blogs collection
+		const blogsRef = collection(db, 'blogs');
+		const blogQuery = query(blogsRef, where('authorEmail', '==', authorEmail));
+		const blogSnapshot = await getDocs(blogQuery);
+		
+		const blogUpdatePromises = [];
+		blogSnapshot.forEach((blogDoc) => {
+			blogUpdatePromises.push(
+				updateDoc(doc(db, 'blogs', blogDoc.id), { 
+					author: newDisplayName 
+				})
+			);
+		});
+		
+		// Update blogsRef collection  
+		const blogsRefCollection = collection(db, 'blogsRef');
+		const blogsRefQuery = query(blogsRefCollection, where('authorEmail', '==', authorEmail));
+		const blogsRefSnapshot = await getDocs(blogsRefQuery);
+		
+		const blogsRefUpdatePromises = [];
+		blogsRefSnapshot.forEach((blogRefDoc) => {
+			blogsRefUpdatePromises.push(
+				updateDoc(doc(db, 'blogsRef', blogRefDoc.id), { 
+					author: newDisplayName 
+				})
+			);
+		});
+		
+		// Execute all updates
+		await Promise.all([...blogUpdatePromises, ...blogsRefUpdatePromises]);
+		
+		console.log(`Successfully synced displayName across ${blogUpdatePromises.length} blogs and ${blogsRefUpdatePromises.length} blog references`);
+		
+	} catch (error) {
+		console.error('Error syncing displayName in blogs:', error);
+		// Don't throw the error as the profile update was successful
+		showNotification('Profile updated, but there was an issue syncing with blogs. Some blogs may show the old name until refreshed.', 'warning');
+	}
+}
+
 // Initialize profile page when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
 	// Check if we're on the profile page
@@ -487,7 +697,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 	}
+
+	// Check if we're on the author page
+	else if (window.location.pathname.includes('author.html')) {
+		// Load author profile directly (doesn't require authentication)
+		loadAuthorProfile();
+	}
 });
 
 // Export functions that might be needed by other scripts
-export { loadUserProfile, loadUserBlogs, showLoading, showNotification };
+export { loadUserProfile, loadUserBlogs, loadAuthorProfile, loadAuthorBlogs, showLoading, showNotification };
+

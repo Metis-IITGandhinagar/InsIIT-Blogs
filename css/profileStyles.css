@@ -571,3 +571,37 @@
         font-size: 0.9rem;
     }
 }
+
+/* Author profile page styles */
+.author-info {
+    flex: 1;
+}
+
+.info-group {
+    margin-bottom: 1.5rem;
+}
+
+.info-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.info-value {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 0;
+    color: #495057;
+    font-size: 1rem;
+    line-height: 1.5;
+    min-height: 1.2em;
+}
+
+.info-value:empty::before {
+    content: 'Not provided';
+    color: #6c757d;
+    font-style: italic;
+}
