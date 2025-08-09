@@ -1,229 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Create a Blog</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/createBlogStyles.css">
-    <link rel="stylesheet" href="css/darkMode.css">
-    <link rel="stylesheet" href="css/darkModeCreateBlog.css">
-	<link rel="icon" type="image/png" href="assets/favicon.ico">
-  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
-  <script src="js/markdownParser.js" defer></script>
-  <script src="js/firebaseSetup.js" defer type="module"></script>
-  <script src="js/script.js" defer type="module"></script>
-  <script src="js/createBlogScript.js" defer type="module"></script>
-  <script src="js/darkMode.js" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/createBlogStyles.css" />
+    <link rel="stylesheet" href="css/darkMode.css" />
+    <link rel="stylesheet" href="css/darkModeCreateBlog.css" />
+    <link rel="icon" type="image/png" href="assets/favicon.ico" />
+    <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+    <script src="js/markdownParser.js" defer></script>
+    <script src="js/firebaseSetup.js" defer type="module"></script>
+    <script src="js/script.js" defer type="module"></script>
+    <script src="js/createBlogScript.js" defer type="module"></script>
+    <script src="js/darkMode.js" defer></script>
   </head>
   <body>
-	  <div id="navbar">
-		  <div id="logo">
-			<a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
-		</div>
+    <div id="navbar">
+      <div id="logo">
+        <a href="index.html"><img src="assets/Logo.jpg" alt="Logo" /></a>
+      </div>
 
-		  <div id="rightBox">
-			  <div id="userStatus"> 
-			  <div id="userIcon">User</div>
-			  <div id="userDropdown" class="user-dropdown">
-				  <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
-				  <div id="logoutButton" class="logout-btn">Logout</div>
-			  </div>
-		  </div>
-		  </div>
-	  </div>
-	
+      <div id="rightBox">
+        <div id="userStatus">
+          <div id="userIcon">User</div>
+          <div id="userDropdown" class="user-dropdown">
+            <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
+            <div id="logoutButton" class="logout-btn">Logout</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	  <!-- Step 1: Blog Details Form -->
-	  <div id="blogDetailsStep" class="step-container active">
-		  <div class="step-header">
-			  <h1>Create New Blog</h1>
-			  <p>Step 1 of 2: Blog Details</p>
-		  </div>
-		  
-		  <form id="blogDetailsForm" class="details-form">
-			  <div class="form-group">
-				  <label for="title">Title *</label>
-				  <input type="text" id="title" name="title" required placeholder="Enter your blog title">
-			  </div>
-			  
-			  <div class="form-group">
-				  <label for="subtitle">Subtitle *</label>
-				  <input type="text" id="subtitle" name="subtitle" required placeholder="Enter your blog subtitle">
-			  </div>
-			  
-			  <div class="form-row">
-				  <div class="form-group">
-					  <label for="authorName">Author Name</label>
-					  <input type="text" id="authorName" name="authorName" readonly placeholder="Loading...">
-				  </div>
-				  
-				  <div class="form-group">
-					  <label for="username">Username</label>
-					  <input type="text" id="username" name="username" readonly placeholder="Loading...">
-				  </div>
-			  </div>
-			  
-			  <div class="form-row">
-				  <div class="form-group">
-					  <label for="publishDate">Publish Date *</label>
-					  <input type="date" id="publishDate" name="publishDate" required>
-				  </div>
-				  
-				  <div class="form-group">
-					  <label for="category">Category *</label>
-					  <select id="category" name="category" required>
-						  <option value="">Select a category</option>
-						  <option value="technology">Technology</option>
-						  <option value="science">Science</option>
-						  <option value="programming">Programming</option>
-						  <option value="research">Research</option>
-						  <option value="academic">Academic</option>
-						  <option value="innovation">Innovation</option>
-						  <option value="other">Other</option>
-					  </select>
-				  </div>
-			  </div>
-			  
-			  <div class="form-actions">
-				  <button type="button" id="nextToBodyStep" class="next-btn">Next: Write Content</button>
-			  </div>
-		  </form>
-	  </div>
+    <!-- Step 1: Blog Details Form -->
+    <div id="blogDetailsStep" class="step-container active">
+      <div class="step-header">
+        <h1>Create New Blog</h1>
+        <p>Step 1 of 2: Blog Details</p>
+      </div>
 
-	  <!-- Step 2: Blog Body Editor -->
-	  <div id="blogBodyStep" class="step-container">
-		  <div class="editor-header">
-			  <div class="editor-nav">
-				  <button type="button" id="backToDetails" class="back-btn">← Back to Details</button>
-				  <div class="step-info">
-					  <h2 id="editorTitle">Blog Title</h2>
-					  <p>Step 2 of 2: Write Your Content</p>
-				  </div>
-			  </div>
-		  </div>
-		  
-		  <div class="editor-container">
-			  <div class="editor-toolbar">
-				  <!-- Text Formatting -->
-				  <button type="button" class="toolbar-btn" data-md="bold" title="Bold">
-					  <strong>B</strong>
-				  </button>
-				  <button type="button" class="toolbar-btn" data-md="italic" title="Italic">
-					  <em>I</em>
-				  </button>
-				  <button type="button" class="toolbar-btn" data-md="strikethrough" title="Strikethrough">
-					  <span style="text-decoration: line-through;">S</span>
-				  </button>
-				  <button type="button" class="toolbar-btn" data-md="code" title="Inline Code">
-					  &lt;/&gt;
-				  </button>
-				  
+      <form id="blogDetailsForm" class="details-form">
+        <div class="form-group">
+          <label for="title">Title *</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            required
+            placeholder="Enter your blog title"
+          />
+        </div>
 
-				  <div class="toolbar-separator"></div>
-				  
-				  <!-- Headers -->
-				  <button type="button" class="toolbar-btn" data-md="h1" title="Heading 1">
-					  H1
-				  </button>
-				  <button type="button" class="toolbar-btn" data-md="h2" title="Heading 2">
-					  H2
-				  </button>
-				  <button type="button" class="toolbar-btn" data-md="h3" title="Heading 3">
-					  H3
-				  </button>
-				  
-				  <div class="toolbar-separator"></div>
-				  
-				  <!-- Lists -->
-				  <button type="button" class="toolbar-btn" data-md="ul" title="Bullet List">
-					  ⏺
-				  </button>
+        <div class="form-group">
+          <label for="subtitle">Subtitle *</label>
+          <input
+            type="text"
+            id="subtitle"
+            name="subtitle"
+            required
+            placeholder="Enter your blog subtitle"
+          />
+        </div>
 
-				  <button type="button" class="toolbar-btn" data-md="ol" title="Numbered List">
-					  1.
-				  </button>
-				  
-				  <div class="toolbar-separator"></div>
-				  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="authorName">Author Name</label>
+            <input
+              type="text"
+              id="authorName"
+              name="authorName"
+              readonly
+              placeholder="Loading..."
+            />
+          </div>
 
-				  <!-- Links -->
-				  <button type="button" class="toolbar-btn" data-md="link" title="Insert Link">
-					  🔗
-				  </button>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              readonly
+              placeholder="Loading..."
+            />
+          </div>
+        </div>
 
-				  
-				  <div class="toolbar-separator"></div>
-				  
-				  <!-- Other -->
-				  <button type="button" class="toolbar-btn" data-md="quote" title="Quote">
-					  "
-				  </button>
-				  <button type="button" class="toolbar-btn" data-md="codeblock" title="Code Block">
-					  { }
-				  </button>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="publishDate">Publish Date *</label>
+            <input type="date" id="publishDate" name="publishDate" required />
+          </div>
 
-				  <button type="button" class="toolbar-btn" data-md="hr" title="Horizontal Rule">
-					  ―
-				  </button>
-				  
-				  <div class="toolbar-separator"></div>
-				  
-				  <!-- Preview Button -->
-				  <button type="button" id="previewBtn" class="toolbar-btn preview-btn" title="Preview Blog">
-					  👁️ Preview
+          <div class="form-group">
+            <label for="category">Category *</label>
+            <select id="category" name="category" required>
+              <option value="">Select a category</option>
+              <option value="technology">Technology</option>
+              <option value="science">Science</option>
+              <option value="programming">Programming</option>
+              <option value="research">Research</option>
+              <option value="academic">Academic</option>
+              <option value="innovation">Innovation</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
 
-				  </button>
-				  <button type="button" class="toolbar-btn" data-md="hr" title="Horizontal Rule">
-					  ―
-				  </button>
-			  </div>
-			  
-			  <div id="blogEditor" class="blog-editor" placeholder="Start writing your blog content here...">
-			  </div>
-			  
+        <div class="form-group">
+          <label for="club">Club *</label>
+          <select id="club" name="club" required>
+            <option value="">Select a club</option>
+            <option value="codingClub">Coding Club</option>
+            <option value="roboticsClub">Robotics Club</option>
+            <option value="literatureClub">Literature Club</option>\
+			<!-- Add as many clubs as required -->
+          </select>
+        </div>
 
-			  <!-- Markdown input dialogs -->
-			  <div id="linkDialog" class="md-dialog" style="display: none;">
-				  <div class="md-dialog-content">
-					  <h3>Insert Link</h3>
-					  <div class="form-group">
-						  <label for="linkText">Link Text:</label>
-						  <input type="text" id="linkText" placeholder="Enter link text">
-					  </div>
-					  <div class="form-group">
-						  <label for="linkUrl">URL:</label>
-						  <input type="url" id="linkUrl" placeholder="https://example.com">
-					  </div>
-					  <div class="dialog-actions">
-						  <button type="button" id="linkCancel" class="btn-cancel">Cancel</button>
-						  <button type="button" id="linkInsert" class="btn-insert">Insert</button>
-					  </div>
-				  </div>
+        <div class="form-actions">
+          <button type="button" id="nextToBodyStep" class="next-btn">
+            Next: Write Content
+          </button>
+        </div>
+      </form>
+    </div>
 
-			  </div>
-		  </div>
-		  
-		  <div class="editor-actions">
-			  <button type="button" id="publishBlog" class="publish-btn">Publish Blog</button>
-		  </div>
-	  </div>
+    <!-- Step 2: Blog Body Editor -->
+    <div id="blogBodyStep" class="step-container">
+      <div class="editor-header">
+        <div class="editor-nav">
+          <button type="button" id="backToDetails" class="back-btn">
+            ← Back to Details
+          </button>
+          <div class="step-info">
+            <h2 id="editorTitle">Blog Title</h2>
+            <p>Step 2 of 2: Write Your Content</p>
+          </div>
+        </div>
+      </div>
 
-	  <!-- Preview Modal -->
-	  <div id="previewModal" class="preview-modal" style="display: none;">
-		  <div class="preview-modal-content">
-			  <div class="preview-header">
-				  <h2>Blog Preview</h2>
-				  <button type="button" id="closePreview" class="close-preview-btn">✕</button>
-			  </div>
-			  <div class="preview-body">
-				  <div id="previewContent" class="preview-content">
-					  <!-- Rendered markdown content will be inserted here -->
-				  </div>
-			  </div>
-		  </div>
-	  </div>
+      <div class="editor-container">
+        <div class="editor-toolbar">
+          <!-- Text Formatting -->
+          <button type="button" class="toolbar-btn" data-md="bold" title="Bold">
+            <strong>B</strong>
+          </button>
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="italic"
+            title="Italic"
+          >
+            <em>I</em>
+          </button>
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="strikethrough"
+            title="Strikethrough"
+          >
+            <span style="text-decoration: line-through">S</span>
+          </button>
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="code"
+            title="Inline Code"
+          >
+            &lt;/&gt;
+          </button>
+
+          <div class="toolbar-separator"></div>
+
+          <!-- Headers -->
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="h1"
+            title="Heading 1"
+          >
+            H1
+          </button>
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="h2"
+            title="Heading 2"
+          >
+            H2
+          </button>
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="h3"
+            title="Heading 3"
+          >
+            H3
+          </button>
+
+          <div class="toolbar-separator"></div>
+
+          <!-- Lists -->
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="ul"
+            title="Bullet List"
+          >
+            ⏺
+          </button>
+
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="ol"
+            title="Numbered List"
+          >
+            1.
+          </button>
+
+          <div class="toolbar-separator"></div>
+
+          <!-- Links -->
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="link"
+            title="Insert Link"
+          >
+            🔗
+          </button>
+
+          <div class="toolbar-separator"></div>
+
+          <!-- Other -->
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="quote"
+            title="Quote"
+          >
+            "
+          </button>
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="codeblock"
+            title="Code Block"
+          >
+            { }
+          </button>
+
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="hr"
+            title="Horizontal Rule"
+          >
+            ―
+          </button>
+
+          <div class="toolbar-separator"></div>
+
+          <!-- Preview Button -->
+          <button
+            type="button"
+            id="previewBtn"
+            class="toolbar-btn preview-btn"
+            title="Preview Blog"
+          >
+            👁️ Preview
+          </button>
+          <button
+            type="button"
+            class="toolbar-btn"
+            data-md="hr"
+            title="Horizontal Rule"
+          >
+            ―
+          </button>
+        </div>
+
+        <div
+          id="blogEditor"
+          class="blog-editor"
+          placeholder="Start writing your blog content here..."
+        ></div>
+
+        <!-- Markdown input dialogs -->
+        <div id="linkDialog" class="md-dialog" style="display: none">
+          <div class="md-dialog-content">
+            <h3>Insert Link</h3>
+            <div class="form-group">
+              <label for="linkText">Link Text:</label>
+              <input type="text" id="linkText" placeholder="Enter link text" />
+            </div>
+            <div class="form-group">
+              <label for="linkUrl">URL:</label>
+              <input
+                type="url"
+                id="linkUrl"
+                placeholder="https://example.com"
+              />
+            </div>
+            <div class="dialog-actions">
+              <button type="button" id="linkCancel" class="btn-cancel">
+                Cancel
+              </button>
+              <button type="button" id="linkInsert" class="btn-insert">
+                Insert
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="editor-actions">
+        <button type="button" id="publishBlog" class="publish-btn">
+          Publish Blog
+        </button>
+      </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="preview-modal" style="display: none">
+      <div class="preview-modal-content">
+        <div class="preview-header">
+          <h2>Blog Preview</h2>
+          <button type="button" id="closePreview" class="close-preview-btn">
+            ✕
+          </button>
+        </div>
+        <div class="preview-body">
+          <div id="previewContent" class="preview-content">
+            <!-- Rendered markdown content will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Toast Notification -->
     <div id="toast" class="toast">
@@ -233,4 +350,3 @@
     </div>
   </body>
 </html>
-
