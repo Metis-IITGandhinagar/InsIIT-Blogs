@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Show/hide button based on scroll position
   const toggleBackToTopButton = () => {
-    if (window.pageYOffset > 300) {
+    if (window.pageYOffset > 200) {
       backToTopButton.classList.add('visible');
     } else {
       backToTopButton.classList.remove('visible');
