@@ -28,7 +28,7 @@
       
 
       <a href="createBlog.html">Create Blog</a>
-      <div class="dropdown-btn " id="viewProfileButton"><a href=""></a>View Profile</div>
+      <div class="dropdown-btn view-profile-btn"><a href=""></a>View Profile</div>
       <div class="logout-btn" id="logoutButton">Logout</div>
 
     </div>
@@ -43,7 +43,7 @@
 			<div id="userStatus">
 				<div id="userIcon">User</div>
 				<div id="userDropdown" class="user-dropdown">
-					<div id="viewProfileButton" class="dropdown-btn">View Profile</div>
+					<div id="viewProfileButton" class="dropdown-btn view-profile-btn">View Profile</div>
 					<div id="logoutButton" class="logout-btn">Logout</div>
 				</div>
 			</div>
@@ -91,46 +91,35 @@
 			<div class="form-group">
 				<label>Club *</label>
 				<div class="club-options">
-					<label class="club-option">
-						<input type="radio" name="club" value="Metis" required>
-						Metis
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="Scale">
-						Scale
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="Digis">
-						Digis
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="Grasp">
-						Grasp
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="Odessey">
-						Odyssey
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="Embed">
-						Embed
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="Lambda">
-						Lambda
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="LitSoc">
-						LitSoc
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="Step Up">
-						Step Up
-					</label>
-					<label class="club-option">
-						<input type="radio" name="club" value="Sargam">
-						Sargam
-					</label>
+					<input type="radio" id="club-metis" name="club" value="Metis" required>
+					<label for="club-metis" class="club-option">Metis</label>
+
+					<input type="radio" id="club-scale" name="club" value="Scale">
+					<label for="club-scale" class="club-option">Scale</label>
+
+					<input type="radio" id="club-digis" name="club" value="Digis">
+					<label for="club-digis" class="club-option">Digis</label>
+
+					<input type="radio" id="club-grasp" name="club" value="Grasp">
+					<label for="club-grasp" class="club-option">Grasp</label>
+
+					<input type="radio" id="club-odessey" name="club" value="Odessey">
+					<label for="club-odessey" class="club-option">Odyssey</label>
+
+					<input type="radio" id="club-embed" name="club" value="Embed">
+					<label for="club-embed" class="club-option">Embed</label>
+
+					<input type="radio" id="club-lambda" name="club" value="Lambda">
+					<label for="club-lambda" class="club-option">Lambda</label>
+
+					<input type="radio" id="club-litsoc" name="club" value="LitSoc">
+					<label for="club-litsoc" class="club-option">LitSoc</label>
+
+					<input type="radio" id="club-stepup" name="club" value="Step Up">
+					<label for="club-stepup" class="club-option">Step Up</label>
+
+					<input type="radio" id="club-sargam" name="club" value="Sargam">
+					<label for="club-sargam" class="club-option">Sargam</label>
 				</div>
 			</div>
 
