@@ -1,30 +1,23 @@
 import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js'
 import auth from './script.js'
 import app from './firebaseSetup.js'
 
-// Toast notification function
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
     const toastMessage = toast.querySelector('.toast-message');
     
-    // Set message and type
     toastMessage.textContent = message;
     toast.className = `toast ${type}`;
     
-    // Show toast
     toast.classList.add('show');
     
-    // Hide toast after 3 seconds
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
 }
 
 const firestore = getFirestore(app)
-const storage = getStorage(app) // Initialize Firebase Storage
 
-// Blog data storage
 let blogData = {
     title: '',
     subtitle: '',
@@ -35,7 +28,6 @@ let blogData = {
     club: ''
 };
 
-// DOM Elements
 const blogDetailsStep = document.getElementById('blogDetailsStep');
 const blogBodyStep = document.getElementById('blogBodyStep');
 const blogDetailsForm = document.getElementById('blogDetailsForm');
@@ -44,37 +36,34 @@ const backToDetailsBtn = document.getElementById('backToDetails');
 const blogEditor = document.getElementById('blogEditor');
 const editorTitle = document.getElementById('editorTitle');
 const publishBtn = document.getElementById('publishBlog');
+const saveDraftBtn = document.getElementById('saveDraftBtn');
+const loadDraftBtn = document.getElementById('loadDraftBtn');
 
-
-// Dialog elements
 const linkDialog = document.getElementById('linkDialog');
-
 
 let currentSelection = { start: 0, end: 0 };
 
-// Auto-populate user data when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // Set today's date as default publish date
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('publishDate').value = today;
     
-    // Setup editor
     setupMarkdownEditor();
     
-    // Wait for auth state and populate user data
     setTimeout(() => {
         if (auth.currentUser) {
             populateUserData();
         }
     }, 1000);
+
+	if (localStorage.getItem('blogDraft')) {
+		loadDraftBtn.style.background = '#28a745';
+	}
 });
 
 function setupMarkdownEditor() {
-    // Make the editor a textarea instead of contenteditable
     blogEditor.contentEditable = false;
     blogEditor.innerHTML = '';
     
-    // Create textarea
     const textarea = document.createElement('textarea');
     textarea.id = 'markdownEditor';
     textarea.className = 'markdown-textarea';
@@ -95,10 +84,8 @@ function setupMarkdownEditor() {
     
     blogEditor.appendChild(textarea);
     
-    // Store reference to textarea
     window.markdownEditor = textarea;
     
-    // Add event listeners for selection tracking
     textarea.addEventListener('selectionchange', updateSelection);
     textarea.addEventListener('keyup', updateSelection);
     textarea.addEventListener('mouseup', updateSelection);
@@ -146,7 +133,6 @@ function wrapSelectedText(prefix, suffix = '') {
         const newText = prefix + placeholder + suffix;
         insertTextAtCursor(newText, true);
         
-        // Select the placeholder text
         const start = currentSelection.start + prefix.length;
         const end = start + placeholder.length;
         textarea.setSelectionRange(start, end);
@@ -158,7 +144,6 @@ function insertLine(text) {
     const beforeCursor = textarea.value.substring(0, currentSelection.start);
     const afterCursor = textarea.value.substring(currentSelection.end);
     
-    // Check if we're at the start of a line
     const atLineStart = beforeCursor.length === 0 || beforeCursor.endsWith('\n');
     const prefix = atLineStart ? '' : '\n';
     const suffix = afterCursor.startsWith('\n') ? '' : '\n';
@@ -166,7 +151,6 @@ function insertLine(text) {
     insertTextAtCursor(prefix + text + suffix);
 }
 
-// Markdown formatting functions
 const markdownActions = {
     bold: () => wrapSelectedText('**', '**'),
     italic: () => wrapSelectedText('*', '*'),
@@ -181,12 +165,9 @@ const markdownActions = {
     codeblock: () => insertLine('```\ncode block\n```'),
     hr: () => insertLine('---'),
     table: () => insertLine('| Header 1 | Header 2 | Header 3 |\n|----------|----------|----------|\n| Cell 1   | Cell 2   | Cell 3   |'),
-
     link: () => showLinkDialog()
-
 };
 
-// Event listener for toolbar buttons
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('toolbar-btn')) {
         const action = e.target.dataset.md;
@@ -196,7 +177,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Dialog functions
 function showLinkDialog() {
     const selectedText = getSelectedText();
     document.getElementById('linkText').value = selectedText;
@@ -205,13 +185,10 @@ function showLinkDialog() {
     document.getElementById('linkText').focus();
 }
 
-
 function hideDialogs() {
     linkDialog.style.display = 'none';
-
 }
 
-// Link dialog handlers
 document.getElementById('linkInsert').addEventListener('click', () => {
     const text = document.getElementById('linkText').value || 'link text';
     const url = document.getElementById('linkUrl').value || 'https://';
@@ -222,24 +199,19 @@ document.getElementById('linkInsert').addEventListener('click', () => {
 
 document.getElementById('linkCancel').addEventListener('click', hideDialogs);
 
-
-// Close dialogs when clicking outside
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('md-dialog')) {
         hideDialogs();
     }
 });
 
-// Close dialogs with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         hideDialogs();
-
         hidePreview();
     }
 });
 
-// Preview functionality
 function showPreview() {
     const markdownContent = window.markdownEditor.value.trim();
     
@@ -248,7 +220,6 @@ function showPreview() {
         return;
     }
     
-    // Use the markdown parser that's already loaded
     if (typeof window.MarkdownParser === 'undefined') {
         showToast('Markdown parser not loaded. Please refresh the page.', 'error');
         return;
@@ -257,20 +228,17 @@ function showPreview() {
     const parser = new window.MarkdownParser();
     const htmlContent = parser.parse(markdownContent);
     
-    // Get blog details for complete preview
     const title = blogData.title || document.getElementById('title').value || 'Blog Title';
     const subtitle = blogData.subtitle || document.getElementById('subtitle').value || 'Blog Subtitle';
     const author = blogData.authorName || document.getElementById('authorName').value || 'Author';
     const publishDate = blogData.publishDate || document.getElementById('publishDate').value || new Date().toISOString().split('T')[0];
     
-    // Format the date
     const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
     
-    // Create the complete preview HTML
     const previewHTML = `
         <div class="blog-header">
             <h1>${title}</h1>
@@ -285,11 +253,8 @@ function showPreview() {
         </div>
     `;
     
-    // Display the preview
     document.getElementById('previewContent').innerHTML = previewHTML;
     document.getElementById('previewModal').style.display = 'flex';
-    
-    // Prevent body scrolling
     document.body.style.overflow = 'hidden';
 }
 
@@ -298,17 +263,12 @@ function hidePreview() {
     document.body.style.overflow = 'auto';
 }
 
-// Preview button event listener
 document.getElementById('previewBtn').addEventListener('click', showPreview);
-
-// Close preview button event listener
 document.getElementById('closePreview').addEventListener('click', hidePreview);
 
-// Close preview when clicking outside modal content
 document.getElementById('previewModal').addEventListener('click', (e) => {
     if (e.target.id === 'previewModal') {
         hidePreview();
-
     }
 });
 
@@ -322,7 +282,6 @@ function populateUserData() {
     }
 }
 
-// Step navigation
 nextToBodyBtn.addEventListener('click', () => {
     const clubRadios = document.getElementsByName('club');
     let selectedClub = null;
@@ -350,7 +309,6 @@ backToDetailsBtn.addEventListener('click', () => {
     showDetailsStep();
 });
 
-
 function validateDetailsForm() {
     const form = blogDetailsForm;
     const title = form.title.value.trim();
@@ -373,7 +331,6 @@ function validateDetailsForm() {
         return false;
     }
 
-
     if (!selectedClub) {
         showToast('Please select a club', 'error');
         return false;
@@ -381,7 +338,6 @@ function validateDetailsForm() {
 
     return true;
 }
-
 
 function saveDetailsData() {
     const form = blogDetailsForm;
@@ -405,7 +361,49 @@ function showBodyStep() {
     blogEditor.focus();
 }
 
-// Publish blog
+function saveDraft() {
+    const form = blogDetailsForm;
+    const draft = {
+        title: form.title.value.trim(),
+        subtitle: form.subtitle.value.trim(),
+        publishDate: form.publishDate.value,
+        club: form.querySelector('input[name="club"]:checked')?.value || '',
+        body: window.markdownEditor.value.trim()
+    };
+    
+    localStorage.setItem('blogDraft', JSON.stringify(draft));
+    showToast('Draft saved successfully!', 'success');
+	loadDraftBtn.style.background = '#28a745';
+}
+
+function loadDraft() {
+    const draftString = localStorage.getItem('blogDraft');
+    if (draftString) {
+        const draft = JSON.parse(draftString);
+        const form = blogDetailsForm;
+        
+        form.title.value = draft.title || '';
+        form.subtitle.value = draft.subtitle || '';
+        form.publishDate.value = draft.publishDate || '';
+        
+        if (draft.club) {
+            const clubRadio = form.querySelector(`input[name="club"][value="${draft.club}"]`);
+            if (clubRadio) {
+                clubRadio.checked = true;
+            }
+        }
+        
+        window.markdownEditor.value = draft.body || '';
+        
+        showToast('Draft loaded successfully!', 'success');
+    } else {
+        showToast('No saved draft found.', 'error');
+    }
+}
+
+saveDraftBtn.addEventListener('click', saveDraft);
+loadDraftBtn.addEventListener('click', loadDraft);
+
 publishBtn.addEventListener('click', async () => {
     if (!auth.currentUser) {
         showToast('Please log in to publish your blog', 'error');
@@ -424,20 +422,6 @@ publishBtn.addEventListener('click', async () => {
         publishBtn.disabled = true;
         publishBtn.textContent = 'Publishing...';
         
-        let imageUrl = '';
-        const imageFile = document.getElementById('coverImage').files[0];
-
-        if (imageFile) {
-            // Create a storage reference
-            const storageRef = ref(storage, `blog-images/${Date.now()}-${imageFile.name}`);
-            
-            // Upload the file
-            const snapshot = await uploadBytes(storageRef, imageFile);
-            
-            // Get the download URL
-            imageUrl = await getDownloadURL(snapshot.ref);
-        }
-        
         const docRef = await addDoc(collection(firestore, "blogs"), {
             title: blogData.title,
             subtitle: blogData.subtitle,
@@ -449,8 +433,7 @@ publishBtn.addEventListener('click', async () => {
             authorEmail: auth.currentUser.email,
             createdAt: new Date().toISOString(),
             status: 'published',
-            contentType: 'markdown', // Add this to indicate markdown content
-            imageUrl: imageUrl // Add the image URL here
+            contentType: 'markdown'
         });
 
         const indexRef = await addDoc(collection(firestore, "blogsRef"), {
@@ -464,13 +447,13 @@ publishBtn.addEventListener('click', async () => {
             blogId: docRef.id,
             createdAt: new Date().toISOString(),
             status: 'published',
-            contentType: 'markdown',
-            imageUrl: imageUrl // And also here for the reference document
+            contentType: 'markdown'
         });
 
         showToast('Blog published successfully!');
+		localStorage.removeItem('blogDraft');
+		loadDraftBtn.style.background = '#6c757d';
         
-        // Reset form and redirect after a delay
         setTimeout(() => {
             window.location.href = '/index.html';
         }, 2000);
@@ -484,12 +467,10 @@ publishBtn.addEventListener('click', async () => {
     }
 });
 
-// Handle auth state changes
 auth.onAuthStateChanged((user) => {
     if (user) {
         populateUserData();
     } else {
-        // Redirect to login if not authenticated
         window.location.href = '/index.html';
     }
 });

@@ -14,12 +14,10 @@
 	<style>
 		.markdown-textarea {
 			color: #1a1a1a;
-			/* Dark text for light mode */
 		}
 
 		[data-theme="dark"] .markdown-textarea {
 			color: #f0f0f0 !important;
-			/* Light text for dark mode */
 		}
 	</style>
 	<script src="js/markdownParser.js" defer></script>
@@ -131,6 +129,7 @@
 
 
 			<div class="form-actions">
+				<button type="button" id="loadDraftBtn" class="next-btn" style="background: #6c757d;">Load Draft</button>
 				<button type="button" id="nextToBodyStep" class="next-btn">Next: Write Content</button>
 			</div>
 		</form>
@@ -244,6 +243,7 @@
 		</div>
 
 		<div class="editor-actions">
+			<button type="button" id="saveDraftBtn" class="publish-btn" style="background: #007bff;">Save Draft</button>
 			<button type="button" id="publishBlog" class="publish-btn">Publish Blog</button>
 		</div>
 	</div>
@@ -282,10 +282,10 @@
 			</div>
 		</div>
 
-		<p id="metis">Made with ❤ by Metis, IITGN</p>
+		<p id="metis">Made with ❤️ by Metis, IITGN</p>
 
 		<button id="backToTop" class="back-to-top" aria-label="Back to top">
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none"
 				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 				<path d="M18 15l-6-6-6 6" />
 			</svg>
