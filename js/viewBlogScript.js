@@ -11,6 +11,7 @@ const subline = document.querySelector('#subline')
 const author = document.querySelector('#author')
 const blogDate = document.querySelector('#blogDate')
 const body = document.querySelector('#body')
+const blogImage = document.querySelector('#blogImage');
 const deleteButton = document.getElementById('deleteButton')
 const deleteDialog = document.getElementById('deleteDialog')
 const confirmDeleteBtn = document.getElementById('confirmDelete')
@@ -108,6 +109,14 @@ async function loadBlog() {
       // Update blog content
       blogTitle.textContent = blogData.title || 'Untitled'
       subline.textContent = blogData.subtitle || ''
+      author.textContent = `By ${blogData.author || 'Unknown Author'}`
+
+      // Display the blog image if it exists
+      if (blogData.imageUrl) {
+        blogImage.src = blogData.imageUrl;
+        blogImage.alt = blogData.title; // Use blog title for alt text
+        blogImage.style.display = 'block';
+      }
       
       // Create clickable author link
       const authorEmail = blogData.authorEmail;
