@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/darkModeViewBlog.css">
 
     <link rel="icon" type="image/png" href="assets/favicon.ico">
+  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
   <script src="js/firebaseSetup.js" defer type="module"></script>
   <script src="js/script.js" defer type="module"></script>
   <script src="js/markdownParser.js" defer></script>
@@ -18,6 +19,7 @@
   <script src="js/darkMode.js" defer></script>
   </head>
   <body>
+    <!-- Delete Confirmation Dialog -->
     <div id="deleteDialog" class="dialog-overlay" hidden>
       <div class="dialog">
         <h3>Delete Blog Post</h3>
@@ -35,6 +37,12 @@
       </div>
 
       <div id="rightBox">
+        <a href="createBlog.html">
+            <div id="createBlog">Create Blog</div>
+        </a>
+        <a href="admin.html" id="adminPanelButton" style="display: none;">
+            <div id="adminButton">Admin Panel</div>
+        </a>
         <div id="userStatus">
           <div id="userIcon">User</div>
           <div id="userDropdown" class="user-dropdown">
@@ -87,14 +95,16 @@
     
     <p id="metis">Made with ❤️ by Metis, IITGN</p>
     
+    <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none"
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M18 15l-6-6-6 6" />
       </svg>
     </button>    
   </div>
 
+  <!-- Back to Top Script -->
   <script src="js/back-to-top.js" defer></script>
 
   </body>

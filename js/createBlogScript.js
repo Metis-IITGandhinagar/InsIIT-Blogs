@@ -1,6 +1,7 @@
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
-import auth from './script.js'
-import app from './firebaseSetup.js'
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js';
+import auth from './script.js';
+import app from './firebaseSetup.js';
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
@@ -16,7 +17,8 @@ function showToast(message, type = 'success') {
     }, 3000);
 }
 
-const firestore = getFirestore(app)
+const firestore = getFirestore(app);
+const storage = getStorage(app);
 
 let blogData = {
     title: '',
@@ -38,7 +40,6 @@ const editorTitle = document.getElementById('editorTitle');
 const publishBtn = document.getElementById('publishBlog');
 const saveDraftBtn = document.getElementById('saveDraftBtn');
 const loadDraftBtn = document.getElementById('loadDraftBtn');
-
 const linkDialog = document.getElementById('linkDialog');
 
 let currentSelection = { start: 0, end: 0 };
@@ -245,7 +246,7 @@ function showPreview() {
             <h2 class="blog-subtitle">${subtitle}</h2>
             <div class="blog-meta">
                 <span class="author">By ${author}</span> • 
-                <span class="date">${formattedDate}</span> • 
+                <span class="date">${formattedDate}</span>
             </div>
         </div>
         <div class="blog-content">
@@ -283,22 +284,6 @@ function populateUserData() {
 }
 
 nextToBodyBtn.addEventListener('click', () => {
-    const clubRadios = document.getElementsByName('club');
-    let selectedClub = null;
-
-    for (const radio of clubRadios) {
-        if (radio.checked) {
-            selectedClub = radio.value;
-            break;
-        }
-    }
-
-    if (!selectedClub) {
-        alert("Please select a club before continuing.");
-    } else {
-        console.log("Selected club:", selectedClub);
-    }
-
     if (validateDetailsForm()) {
         saveDetailsData();
         showBodyStep();
@@ -346,7 +331,7 @@ function saveDetailsData() {
     blogData.authorName = form.authorName.value;
     blogData.username = form.username.value;
     blogData.publishDate = form.publishDate.value;
-    blogData.club=form.querySelector('input[name="club"]:checked').value;
+    blogData.club = form.querySelector('input[name="club"]:checked').value;
 }
 
 function showDetailsStep() {
@@ -358,7 +343,7 @@ function showBodyStep() {
     blogDetailsStep.classList.remove('active');
     blogBodyStep.classList.add('active');
     editorTitle.textContent = blogData.title;
-    blogEditor.focus();
+    window.markdownEditor.focus();
 }
 
 function saveDraft() {
@@ -420,7 +405,16 @@ publishBtn.addEventListener('click', async () => {
     
     try {
         publishBtn.disabled = true;
-        publishBtn.textContent = 'Publishing...';
+        publishBtn.textContent = 'Submitting...';
+        
+        let imageUrl = '';
+        const imageFile = document.getElementById('coverImage')?.files[0];
+
+        if (imageFile) {
+            const storageRef = ref(storage, `blog-images/${Date.now()}-${imageFile.name}`);
+            const snapshot = await uploadBytes(storageRef, imageFile);
+            imageUrl = await getDownloadURL(snapshot.ref);
+        }
         
         const docRef = await addDoc(collection(firestore, "blogs"), {
             title: blogData.title,
@@ -432,11 +426,12 @@ publishBtn.addEventListener('click', async () => {
             club: blogData.club,
             authorEmail: auth.currentUser.email,
             createdAt: new Date().toISOString(),
-            status: 'published',
-            contentType: 'markdown'
+            status: 'pending',
+            contentType: 'markdown',
+            imageUrl: imageUrl
         });
 
-        const indexRef = await addDoc(collection(firestore, "blogsRef"), {
+        await addDoc(collection(firestore, "blogsRef"), {
             title: blogData.title,
             subtitle: blogData.subtitle,
             author: blogData.authorName,
@@ -446,24 +441,25 @@ publishBtn.addEventListener('click', async () => {
             authorEmail: auth.currentUser.email,
             blogId: docRef.id,
             createdAt: new Date().toISOString(),
-            status: 'published',
-            contentType: 'markdown'
+            status: 'pending',
+            contentType: 'markdown',
+            imageUrl: imageUrl
         });
 
-        showToast('Blog published successfully!');
+        showToast('Blog submitted for review!');
 		localStorage.removeItem('blogDraft');
-		loadDraftBtn.style.background = '#6c757d';
+		if (loadDraftBtn) loadDraftBtn.style.background = '#6c757d';
         
         setTimeout(() => {
             window.location.href = '/index.html';
         }, 2000);
 
     } catch (error) {
-        console.error('Error publishing blog:', error);
-        showToast('Error publishing blog. Please try again.', 'error');
+        console.error('Error submitting blog:', error);
+        showToast('Error submitting blog. Please try again.', 'error');
     } finally {
         publishBtn.disabled = false;
-        publishBtn.textContent = 'Publish Blog';
+        publishBtn.textContent = 'Submit for Review';
     }
 });
 

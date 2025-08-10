@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - InsIIT Blogs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/adminStyles.css">
+    <link rel="stylesheet" href="css/darkMode.css">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
+</head>
+<body>
+    <div id="navbar">
+        <div id="logo">
+            <a href="index.html"><img src="assets/Logo.jpg" alt="Logo"></a>
+        </div>
+        <div id="rightBox">
+            <a href="createBlog.html">
+                <div id="createBlog">Create Blog</div>
+            </a>
+            <a href="admin.html" id="adminPanelButton" style="display: none;">
+                <div id="adminButton">Admin Panel</div>
+            </a>
+            <div id="userStatus">
+                <div id="userIcon">User</div>
+                <div id="userDropdown" class="user-dropdown">
+                    <div id="viewProfileButton" class="dropdown-btn">View Profile</div>
+                    <div id="logoutButton" class="logout-btn">Logout</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="admin-container">
+        <h1>Admin Dashboard</h1>
+        <p id="admin-info">Review and manage blog submissions.</p>
+        
+        <div id="pending-blogs-section">
+            <h2>Pending Approval</h2>
+            <div id="pending-blogs-list" class="blogs-list">
+                <!-- Placeholder content will be injected by JavaScript -->
+                <div class="no-blogs-admin">Loading pending blogs...</div>
+            </div>
+        </div>
+        
+        <div id="reviewed-blogs-section">
+            <h2>Recently Reviewed</h2>
+            <div id="reviewed-blogs-list" class="blogs-list">
+                 <!-- Placeholder content will be injected by JavaScript -->
+                 <div class="no-blogs-admin">Loading reviewed blogs...</div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer">
+        <div id="footer-content">
+            <div id="about">
+                <h2>About</h2>
+                <p>This is a blogging website for people in IIT Gandhinagar. This project is made under the Clash of Commits competition by Metis IIT Gandhinagar.</p>
+            </div>
+        </div>
+        <p id="metis">Made with ❤️ by Metis, IITGN</p>
+    </div>
+
+    <script src="js/firebaseSetup.js" type="module"></script>
+    <script src="js/script.js" type="module"></script> 
+    <script src="js/adminScript.js" type="module"></script>
+    <script src="js/darkMode.js" defer></script>
+</body>
+</html>

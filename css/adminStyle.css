@@ -1,0 +1,195 @@
+/* =============================================
+   Admin Dashboard Container & Layout
+   ============================================= */
+.admin-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    min-height: 70vh;
+}
+
+/* =============================================
+   Typography & Headers
+   ============================================= */
+.admin-container h1 {
+    color: var(--text-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    border-bottom: none;
+    text-align: center;
+}
+
+.admin-container h2 {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+#admin-info {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+#admin-info strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* =============================================
+   Blog List & Items
+   ============================================= */
+.blogs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.blog-item {
+    background-color: var(--blog-card-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.blog-item:hover {
+    box-shadow: 0 4px 12px var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.blog-item-info {
+    flex-grow: 1;
+}
+
+.blog-item-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.blog-item-info h4 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-item-info h4 a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.blog-item-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* =============================================
+   Action Buttons & Status Tags
+   ============================================= */
+.blog-item-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.blog-item-actions button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.blog-item-actions button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.approve-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.reject-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-tag {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    text-transform: capitalize;
+}
+
+.status-approved {
+    background-color: #28a745;
+}
+
+.status-rejected {
+    background-color: #dc3545;
+}
+
+/* =============================================
+   Placeholder / Empty State
+   ============================================= */
+.no-blogs-admin {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    background-color: var(--blog-card-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+}
+
+/* =============================================
+   Responsive Design
+   ============================================= */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+    }
+
+    .admin-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .admin-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .blog-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .blog-item-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 0.8rem;
+    }
+}

@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="css/homeStyles.css">
   <link rel="stylesheet" href="css/darkMode.css">
   <link rel="icon" type="image/png" href="assets/favicon.ico">
-  <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
   <script src="js/firebaseSetup.js" defer type="module"></script>
   <script src="js/script.js" defer type="module"></script>
   <script src="js/blogsScript.js" defer type="module"></script>
@@ -31,6 +30,9 @@
     <div id="rightBox">
       <a href="createBlog.html">
         <div id="createBlog"> Create Blog </div>
+      </a>
+      <a href="admin.html" id="adminPanelButton" style="display: none;">
+          <div id="adminButton">Admin Panel</div>
       </a>
       <div id="userStatus">
         <div id="userIcon">User</div>
@@ -72,7 +74,6 @@
     
     <p id="metis">Made with ❤️ by Metis, IITGN</p>
     
-    <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -81,10 +82,6 @@
     </button>    
   </div>
 
-
-
-
-  <!-- Back to Top Script -->
   <script src="js/back-to-top.js" defer></script>
 </body>
 

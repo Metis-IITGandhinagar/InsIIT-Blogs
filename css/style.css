@@ -20,17 +20,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-
-	/* New additions */
 	box-shadow: 0 2px 8px var(--navbar-shadow, rgba(128, 128, 128, 0.2));
-	/* Soft gray shadow */
 	border-radius: 8px;
-	/* Optional: rounded corners for style */
 	background-color: var(--bg-primary, #ffffff);
 }
-
-
-
 
 #loadingContainer {
 	width: 100%;
@@ -118,10 +111,11 @@
 #rightBox {
 	display: flex;
 	justify-content: space-between;
-	gap: 2rem;
+    align-items: center;
+	gap: 1rem;
 }
 
-#rightBox #createBlog {
+#rightBox #createBlog, #rightBox #adminButton {
 	color: var(--text-primary, black);
 	background: var(--button-bg, rgba(128, 128, 128, 0.18));
 	border: 1px solid var(--border-color, black);
@@ -130,13 +124,17 @@
 	cursor: pointer;
 	transition: all 0.3s ease;
 	text-decoration: none;
-	/* removes underline */
 	display: inline-block;
+    white-space: nowrap;
 }
 
-#rightBox #createBlog:hover {
+#rightBox #createBlog:hover, #rightBox #adminButton:hover {
 	background: var(--accent-color, rgba(0, 123, 255, 0.2));
 	color: var(--bg-primary, #fff);
+}
+
+#rightBox #adminPanelButton {
+    text-decoration: none;
 }
 
 #rightBox #userStatus {
@@ -160,18 +158,15 @@
 	overflow: hidden;
 }
 
-/* Modifier when showing image */
 #userIcon.profile-image {
 	padding: 0;
 	background: transparent;
 	border: none;
-	/* Hide border */
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
 }
 
-/* Image inside the circular profile */
 #userIcon.profile-image img {
 	width: 100%;
 	height: 100%;
@@ -179,7 +174,6 @@
 	border-radius: 50%;
 	display: block;
 	border: none;
-	/* Ensure no inner border */
 }
 
 .user-status-message {
@@ -252,7 +246,6 @@
 #footer {
 	padding: 2rem;
 	box-shadow: 0 2px 16px var(--navbar-shadow, rgba(58, 58, 58, 0.2));
-	/* Soft gray shadow */
 	background-color: var(--bg-secondary, #ffffff);
 }
 
@@ -336,7 +329,7 @@
 		gap: 0.5rem;
 	}
 
-	#rightBox #createBlog {
+	#rightBox #createBlog, #rightBox #adminButton {
 		padding: 0.4rem 0.8rem;
 		font-size: 0.85rem;
 	}
