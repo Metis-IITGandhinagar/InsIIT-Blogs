@@ -1,4 +1,5 @@
 import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js'
 import auth from './script.js'
 import app from './firebaseSetup.js'
 
@@ -21,6 +22,7 @@ function showToast(message, type = 'success') {
 }
 
 const firestore = getFirestore(app)
+const storage = getStorage(app) // Initialize Firebase Storage
 
 // Blog data storage
 let blogData = {
@@ -403,19 +405,6 @@ function showBodyStep() {
     blogEditor.focus();
 }
 
-// Editor toolbar functionality - remove this as we now handle it differently
-// document.addEventListener('click', (e) => {
-//     if (e.target.classList.contains('toolbar-btn')) {
-//         const command = e.target.dataset.command;
-//         const value = e.target.dataset.value;
-//         
-//         if (command) {
-//             document.execCommand(command, false, value || null);
-//             blogEditor.focus();
-//         }
-//     }
-// });
-
 // Publish blog
 publishBtn.addEventListener('click', async () => {
     if (!auth.currentUser) {
@@ -435,6 +424,20 @@ publishBtn.addEventListener('click', async () => {
         publishBtn.disabled = true;
         publishBtn.textContent = 'Publishing...';
         
+        let imageUrl = '';
+        const imageFile = document.getElementById('coverImage').files[0];
+
+        if (imageFile) {
+            // Create a storage reference
+            const storageRef = ref(storage, `blog-images/${Date.now()}-${imageFile.name}`);
+            
+            // Upload the file
+            const snapshot = await uploadBytes(storageRef, imageFile);
+            
+            // Get the download URL
+            imageUrl = await getDownloadURL(snapshot.ref);
+        }
+        
         const docRef = await addDoc(collection(firestore, "blogs"), {
             title: blogData.title,
             subtitle: blogData.subtitle,
@@ -446,7 +449,8 @@ publishBtn.addEventListener('click', async () => {
             authorEmail: auth.currentUser.email,
             createdAt: new Date().toISOString(),
             status: 'published',
-            contentType: 'markdown' // Add this to indicate markdown content
+            contentType: 'markdown', // Add this to indicate markdown content
+            imageUrl: imageUrl // Add the image URL here
         });
 
         const indexRef = await addDoc(collection(firestore, "blogsRef"), {
@@ -460,7 +464,8 @@ publishBtn.addEventListener('click', async () => {
             blogId: docRef.id,
             createdAt: new Date().toISOString(),
             status: 'published',
-            contentType: 'markdown'
+            contentType: 'markdown',
+            imageUrl: imageUrl // And also here for the reference document
         });
 
         showToast('Blog published successfully!');
@@ -488,4 +493,3 @@ auth.onAuthStateChanged((user) => {
         window.location.href = '/index.html';
     }
 });
-

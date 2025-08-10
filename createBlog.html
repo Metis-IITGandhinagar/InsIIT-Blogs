@@ -11,7 +11,17 @@
 	<link rel="stylesheet" href="css/darkMode.css">
 	<link rel="stylesheet" href="css/darkModeCreateBlog.css">
 	<link rel="icon" type="image/png" href="assets/favicon.ico">
-	<!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+	<style>
+		.markdown-textarea {
+			color: #1a1a1a;
+			/* Dark text for light mode */
+		}
+
+		[data-theme="dark"] .markdown-textarea {
+			color: #f0f0f0 !important;
+			/* Light text for dark mode */
+		}
+	</style>
 	<script src="js/markdownParser.js" defer></script>
 	<script src="js/firebaseSetup.js" defer type="module"></script>
 	<script src="js/script.js" defer type="module"></script>
@@ -37,7 +47,6 @@
 	</div>
 
 
-	<!-- Step 1: Blog Details Form -->
 	<div id="blogDetailsStep" class="step-container active">
 		<div class="step-header">
 			<h1>Create New Blog</h1>
@@ -127,7 +136,6 @@
 		</form>
 	</div>
 
-	<!-- Step 2: Blog Body Editor -->
 	<div id="blogBodyStep" class="step-container">
 		<div class="editor-header">
 			<div class="editor-nav">
@@ -141,7 +149,6 @@
 
 		<div class="editor-container">
 			<div class="editor-toolbar">
-				<!-- Text Formatting -->
 				<button type="button" class="toolbar-btn" data-md="bold" title="Bold">
 					<strong>B</strong>
 				</button>
@@ -158,7 +165,6 @@
 
 				<div class="toolbar-separator"></div>
 
-				<!-- Headers -->
 				<button type="button" class="toolbar-btn" data-md="h1" title="Heading 1">
 					H1
 				</button>
@@ -171,7 +177,6 @@
 
 				<div class="toolbar-separator"></div>
 
-				<!-- Lists -->
 				<button type="button" class="toolbar-btn" data-md="ul" title="Bullet List">
 					⏺
 				</button>
@@ -183,7 +188,6 @@
 				<div class="toolbar-separator"></div>
 
 
-				<!-- Links -->
 				<button type="button" class="toolbar-btn" data-md="link" title="Insert Link">
 					🔗
 				</button>
@@ -191,7 +195,6 @@
 
 				<div class="toolbar-separator"></div>
 
-				<!-- Other -->
 				<button type="button" class="toolbar-btn" data-md="quote" title="Quote">
 					"
 				</button>
@@ -205,9 +208,8 @@
 
 				<div class="toolbar-separator"></div>
 
-				<!-- Preview Button -->
 				<button type="button" id="previewBtn" class="toolbar-btn preview-btn" title="Preview Blog">
-					👁️ Preview
+					👁 Preview
 
 				</button>
 				<button type="button" class="toolbar-btn" data-md="hr" title="Horizontal Rule">
@@ -221,7 +223,6 @@
 
 
 
-			<!-- Markdown input dialogs -->
 			<div id="linkDialog" class="md-dialog" style="display: none;">
 				<div class="md-dialog-content">
 					<h3>Insert Link</h3>
@@ -247,7 +248,6 @@
 		</div>
 	</div>
 
-	<!-- Preview Modal -->
 	<div id="previewModal" class="preview-modal" style="display: none;">
 		<div class="preview-modal-content">
 			<div class="preview-header">
@@ -256,7 +256,6 @@
 			</div>
 			<div class="preview-body">
 				<div id="previewContent" class="preview-content">
-					<!-- Rendered markdown content will be inserted here -->
 				</div>
 			</div>
 		</div>
@@ -283,9 +282,8 @@
 			</div>
 		</div>
 
-		<p id="metis">Made with ❤️ by Metis, IITGN</p>
+		<p id="metis">Made with ❤ by Metis, IITGN</p>
 
-		<!-- Back to Top Button -->
 		<button id="backToTop" class="back-to-top" aria-label="Back to top">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -294,10 +292,8 @@
 		</button>
 	</div>
 
-	<!-- Back to Top Script -->
 	<script src="js/back-to-top.js" defer></script>
 
-	<!-- Toast Notification -->
 	<div id="toast" class="toast">
 		<div class="toast-content">
 			<span class="toast-message">Blog posted successfully!</span>
