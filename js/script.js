@@ -1,9 +1,7 @@
-import { getAuth, signOut, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, updateProfile } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js'
-import { getFirestore, collection, addDoc, doc, updateDoc, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
+import { getAuth, signOut, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js'
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js'
 
 import app from './firebaseSetup.js'
-
-
 
 const auth = getAuth(app)
 auth.languageCode = 'en'
@@ -16,18 +14,17 @@ const logoutButton = document.querySelector('#logoutButton')
 const viewProfileButton = document.querySelector('#viewProfileButton')
 
 
-
-
+// Helper function to generate username from email
+function generateUsernameFromEmail(email) {
+	if (!email) return '';
+	// Extract the part before @ and remove dots and special characters
+	return email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+}
 async function signInWithGoogle() {
 	signInWithPopup(auth, provider)
 	  .then((result) => {
-	    /** @type {firebase.auth.OAuthCredential} */
-
-	    // This gives you a Google Access Token. You can use it to access the Google API.
 	    // The signed-in user info.
 	    var user = result.user
-	    // IdP data available in result.additionalUserInfo.profile.
-	      // ...
 	    
 	    const firestore = getFirestore(app)
 	    return addDoc(collection(firestore, "authors"), {
@@ -47,11 +44,8 @@ async function signInWithGoogle() {
 	    var errorMessage = error.message
 	    // The email of the user's account used.
 	    var email = error.email
-	    // The firebase.auth.AuthCredential type that was used.
 	    console.log(error)
-	    // ...
 	  })
-	     
 }
 
 function updateUserInterface(user) {
@@ -114,10 +108,7 @@ auth.onAuthStateChanged((user) => {
 			viewProfileButton.addEventListener('click', goToProfile);
 		}
 
-		// Load profile data if on profile page - handled by profileScript.js
-		// if (window.location.pathname.includes('profile.html')) {
-		//     Profile functionality moved to profileScript.js
-		// }
+
 
 		// Load author profile data if on author page
 		if (window.location.pathname.includes('author.html')) {
@@ -155,23 +146,6 @@ function signOutWithGoogle() {
 function goToProfile() {
 	window.location.href = 'profile.html'
 }
-
-// Load user's blogs for profile page - moved to profileScript.js
-
-
-
-
-
-
-
-// Cancel edit functionality moved to profileScript.js
-
-// Utility functions moved to profileScript.js
-
-
-// showNotification function moved to profileScript.js
-
-
 
 
 export default auth
