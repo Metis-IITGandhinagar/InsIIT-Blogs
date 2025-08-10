@@ -11,6 +11,17 @@
 	<link rel="stylesheet" href="css/darkMode.css">
 	<link rel="stylesheet" href="css/darkModeCreateBlog.css">
 	<link rel="icon" type="image/png" href="assets/favicon.ico">
+	<style>
+		.markdown-textarea {
+			color: #1a1a1a;
+			/* Dark text for light mode */
+		}
+
+		[data-theme="dark"] .markdown-textarea {
+			color: #f0f0f0 !important;
+			/* Light text for dark mode */
+		}
+	</style>
 	<script src="js/markdownParser.js" defer></script>
 	<script src="js/firebaseSetup.js" defer type="module"></script>
 	<script src="js/script.js" defer type="module"></script>
@@ -51,11 +62,6 @@
 			<div class="form-group">
 				<label for="subtitle">Subtitle *</label>
 				<input type="text" id="subtitle" name="subtitle" required placeholder="Enter your blog subtitle">
-			</div>
-
-			<div class="form-group">
-				<label for="coverImage">Cover Image</label>
-				<input type="file" id="coverImage" name="coverImage" accept="image/*">
 			</div>
 
 			<div class="form-row">
@@ -203,7 +209,7 @@
 				<div class="toolbar-separator"></div>
 
 				<button type="button" id="previewBtn" class="toolbar-btn preview-btn" title="Preview Blog">
-					👁️ Preview
+					👁 Preview
 
 				</button>
 				<button type="button" class="toolbar-btn" data-md="hr" title="Horizontal Rule">
@@ -250,7 +256,7 @@
 			</div>
 			<div class="preview-body">
 				<div id="previewContent" class="preview-content">
-					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -276,7 +282,7 @@
 			</div>
 		</div>
 
-		<p id="metis">Made with ❤️ by Metis, IITGN</p>
+		<p id="metis">Made with ❤ by Metis, IITGN</p>
 
 		<button id="backToTop" class="back-to-top" aria-label="Back to top">
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
